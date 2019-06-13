@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Security+-02-网络安全-网络基本概念和术语]]></title>
+    <url>%2F2018%2F06%2F20%2F2018-06-20-security-02-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD%2F</url>
+    <content type="text"><![CDATA[介绍基本概念和相关的术语 网络组件 设备 集线器 Hub 单链路争用状态 不能分离冲突域 交换机 Switches 工作在二层（数据链路层）帧 绑定端口和MAC 流量过滤 端口镜像 端口安全 端口禁用 VLANs（虚拟局域网）-数据链路层 路由器 Routers 连接局域网和广域网 工作在三层（网络层） 数据包 代理服务器 防火墙 Firewall 非军事区域DMZ 在内网和外网之间 FTP服务器 负载均衡器 统一安全网关（USG） 介质 同轴电缆 数字机顶盒（模拟转换成电子） 同轴电缆连接到数字机顶盒，传递的是模拟信号 贵 抗干扰能力强 双绞线 用到四根线，剩下的是备份线 两两缠绕是为了避免信号串扰 光缆 里面是玻璃，光信号折射 防窃听 抗干扰 价格贵 安装要求高 服务器 数据阵列存储 缆线问题 噪音 微波炉会产生磁场干扰缆线信号 衰减 随着距离增加减弱 串扰 一根线缆上的信号溢出到另一根线缆中 电缆防火等级 OSI 七层模型 （最基本） 从上到下 应用层 HTML FTP SMTP 表示层 会话层 传输层 TCP UDP 网络层 IP ICMP IGMP 数据链路层 ARP 物理层 IP ipv4 ABCDE四类地址 各类地址中有各自的私有地址 TCP 四层协议 可靠协议 SYN SYN/ACK ACK https首先先建立tcp三次握手 syn泛滥攻击 收到B响应的SYN/ACK后，不回复ACK 使用成千上万机子 这样就会存在成千上万个线程 进行等待 线程增加后到CPU资源耗尽 Dos攻击 设置会话超时 分析请求IP 流量清洗预防Dos攻击 购买供应商流量清洗服务 在WEB服务设备前加流量清洗设备 会话劫持 预测TCP序列号，欺骗B，让B误以为是正常会话用户 UDP 用户数据报文协议 单向连接 速度快 端口对应的协议 tftp 69 udp （考点 tcp/udp 端口 协议名） ICMP 互联网控制消息协议 traceroute linux tracert windows 显示数据包在IP网络经过的路由器的IP地址 超大号的ICMP数据包 改变ping数据包的大小 或者 多台PC进行ping smuf 攻击 （考点） 发送ICMP包给一个局域网的广播地址，广播地址里的所有计算机都会给一个响应 ICMP的源地址改为受害者的地址 这样返回给受害者地址 广播地址里如果有上万台机器 这样返回给受害者的数据会造成Dos攻击 ARP 二层 数据链路层 地址解析协议 将IP地址映射为MAC地址 数据链路层是通过mac地址寻址，才能将数据包送到路由器上，通过arp协议解析路由器ip对应的mac地址，这样就可以将数据包送到路由器上 电脑内存上有arp缓存表 路由器上也有arp缓存表 arp投毒 篡改arp缓存表 将网关ip对应的mac地址修改为黑客自己的mac地址 这样隐私信息会被送到黑客电脑上去 用户登录后显示上不了网 arp欺骗攻击 另外可以修改路由器的arp缓存表 修改合法用户的mac地址对应的ip为黑客ip 实现了中间人攻击 sniffer抓包 HTTP 超文本协议 应用层 80 明文传输 HTTPS 超文本传送协议安全版 密文传输 域名系统 DNS 域名解析 将域名转化为IP地址 DNS区域传送使用TCP协议（考点）不同DNS服务要更新要使用TCP协议 可靠 包大小限制 其他的DNS传送使用UDP协议 DNS扩展 网卡 网络操作系统 协议]]></content>
+      <categories>
+        <category>Security+</category>
+        <category>网络安全</category>
+      </categories>
+      <tags>
+        <tag>Security+</tag>
+        <tag>安全概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Security+-01-安全基本概念]]></title>
+    <url>%2F2018%2F06%2F20%2F2018-06-20-security-01-%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%2F</url>
+    <content type="text"><![CDATA[安全相关的概念介绍 [TOC] Security Fundamentals 安全基础 The Information Security Cycle 信息安全生命周期 Information Security Control 信息安全控制 Authentication Methods 认证方法 Cryptography Fundamental 密码学基础 Security Policy Fundamentals 安全策略基础 信息安全 对可用信息或信息资源的保护 负有重要职责的个人或组着的机密信息的必要的安全手短 减少商业风险和降低因为其他后果的丢失关键数据的可能性 三个特性 机密性 完整性 可用性（可靠性） 保护对象 Data 数据 Resource 资源 Risk 风险威胁主体和资源的可能性 Threats 威胁威胁主体有意无意的破坏 A Vulnerability 漏洞系统存在的弱点或缺陷，配置问题 Intrusions 入侵对信息安全构成威胁的手短 Attacks 攻击分为很多种，物理安全 软件 社会工程学 WEB应用服务 网络 Controls 控制按照既定标准，对各项工作进行安排 控制类型 Prevention 预防 Detection 检测 Correction 改进 补偿 CIA 三角Confidentiality 机密性 Integrity 完整性 Availability 可用性 Non-repudiation 抗抵赖不可否认性 Identification 身份识别 基于你知道的 基于你拥有的 基于生物特征 Authentication 身份认证证明你的身份 Authorization 授权 确定用户对某一实体的权利或特权 在此之前，需要进行身份认证和鉴别 Access Control 访问控制 针对资源、对象或者数据，确定对合法访问者分配权限 对授权进行管理 Access Control Models 访问控制模型 （考点） Mandatory Access Control 强制访问控制 Discretionary Access Control 自由访问控制 Role-Based Access Control 基于角色的访问控制 Accounting and Auditing 审计 过程的跟踪、记录系统活动和资源访问 审计：检查记录 Commen Security Practices 通用安全实践 Implicit Deny 默认拒绝 （考点）防火墙规则 Least Privilege 最小特权 Separation of duties 职责分离 Job Rotation 岗位轮换 Mandatory vacation 强制休假 Time of Day Restrictions 时间限制 Privilege Management 权限管理 User Name/Password Authentication 用户名密码认证Tokens 令牌Biometrics 生物特征Geolocation 地理位置识别Keystroke Authentication 击键认证Multi-factor Authenticaton 多因素认证Mutual Authentication 相互认证Cryptography 密码学Encryption and Decryption 加密与解密Ciphers 加密算法CipherTypes 加密类型Encryption and Security goalpost 加密与安全目标Steganographt 隐写术A Key 秘钥Hashing Encryption 哈希加密Hashing Encryption Algorithms 哈希算法Symmetric Encryption 对称加密Symmetric Encryption Algorithms 对称加密算法Asymmetric Encryption 非对称加密Asymmetric Encryption Techniques 非对称加密技术Key Exchage 密钥交换Digital Signatures 数字签名Cipher Suites 加密算法套件Session Keys 会话密钥Key Stretching 密钥延伸A Security Policy 安全策略Security Policy Components 安全策略组成Common Security Policy types 通用安全策略类型Group Policy 组策略Security Document Categories 安全文档类型Change Management 变更管理Documentation Handling Measures 文档处理方法]]></content>
+      <categories>
+        <category>Security+</category>
+        <category>安全基本概念</category>
+      </categories>
+      <tags>
+        <tag>Security+</tag>
+        <tag>安全概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Security+-课程大纲]]></title>
+    <url>%2F2018%2F06%2F20%2F2018-06-20-security-%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2%2F</url>
+    <content type="text"><![CDATA[介绍Security+的课程大纲 [TOC] 大纲内容1. Network Security 网络安全 20%2. Compliance and Operational Security 合规与运维安全 18%3. Threats and Vulnerabilities 威胁和漏洞 20%4. Application, Data and Host Security 应用、数据和主机安全 15%5. Access Control and Identity Management 访问控制与身份管理 15%6. Cryptography 密码学 12%]]></content>
+      <categories>
+        <category>Security+</category>
+        <category>课程大纲</category>
+      </categories>
+      <tags>
+        <tag>Security+</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Atom环境配置]]></title>
+    <url>%2F2018%2F06%2F19%2F2018-06-19-Atom%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[介绍Atom的常用插件及使用情况 [TOC] 功能插件Sync Settings日常使用过程中会遇到多台电脑同时使用Atom的情况，该插件借助Git实现了插件的同步。 安装Sync Settings插件，需要Token和Gist，根据目前的理解，需要Token来进行GitHub的认证，之后通过Gist来存储与Token对应的Atom配置。 进入GitHub，Settings-Developer settings-Personal access tokens-Generate new token，填写名称，勾选Gist，创建以获取Token。这样获取该Token有权限访问Gist资源。Gist是GitHub提供用户存储代码片段或者文档的的仓库。 创建Gist，按实际命名并添加说明，创建完成获取gist id。 将Token和Gist id填入Sync Settings的设置中，获取该Token对应的Gist读写权限。 执行Ctrl+Shift+P呼出命令行，输入Sync Settings: Backup完成本机配置同步。 获取另一台PC时，下载该插件，将Token和gist填入设置中，执行Ctrl+Shift+P，输入Sync Settings: Restore完成配置同步。 platformio-atom-ide-terminalplatformio-atom-ide-terminal为Atom提供IDE终端，包含主题以及API，方便在编写时候操作终端。在设置里面可以改变终端主题，同时还提供了一系列方便终端输入命令和执行命令的技巧。Alt+Shift+T新建终端，Alt+Shift+X关闭终端。 color-pickercolor-picker是颜色选择器，可以对数字表示的颜色进行实际查看并修改。 split-diffsplit-diff比较两个文本相似文本的差异。Ctrl+Alt+T来进行对比，如果没有两个文件，将会新建一个文件来进行比较，当然也可以通过命令行来执行。 autocomplete-en-cnautocomplete-en-cn用于英文的补全，可以设置在固定文件类型中出现。 autocompleteautocomplete用于自动补全，还未探索其功能。 Markdown插件Markdown的插件有很多，自带的可以使用ctrl+shift+m来实现实时预览。其实际使用主要是基础的语法，下面对插件逐个介绍。 Markdown-WriterMarkdown-Writer为Markdown写作提供快捷键，同时会在菜单栏显示，可以帮助写作。默认的键盘设置是Mac系统下的，要想再Win下使用，需要在ctrl+shift+p下，执行Markdown Writer: Create Default keymaps来获取对应的键设置，但是由于win下存在快捷键冲突的问题，所以有些语法会没有快捷键，也可以自行设置，但是目前已经足够日常使用。这里还可以安装Toolbar for Markdown-Writer，让Markdown语法实现可视化，类似云笔记按钮型写作，这里推荐快捷键来进行写作。 markdown-preview-enhancedmarkdown-preview-enhanced是系统自带预览的增强版本，可以对预览后的主题字体进行修改，快捷键仍然是Ctrl+Shift+M。 使用文档 由于markdown插件的快捷键之间存在冲突，所以将快捷键修改到合适的功能，首先通过命令行查找命令的名称，注意是鼠标放到命令上显示的小写名称，之后找到插件的自定义快捷键文件，设置某条件下可以执行的快捷键，这里设置插入图片的快捷键，如下所示1'ctrl-shift-i': 'markdown-preview-enhanced:image-helper' 这里设置markdown-preview-enhanced，将图片拖拽到编辑器时上传到七牛云，这里要设置七牛的AK、SK、存储空间名称以及域名，这样就可以完成拖拽上传。 美化插件对Atom进行美化可以提高写作效率，增加舒适感。 Atom-BeautifyAtom-Beautify可以对多种语言代码进行美化。对于不同的语言需要进行不同的设置和进一步安装，这里先不做尝试。美化时候打开命令面板，然后输入Atom Beautify: Beautify Language ???，问号为语言格式。如果文件已经有了扩展名，可以使用Ctrl+Alt+B进行美化。 file-iconsfile-icons可以给文件前面加对应的图标，方便浏览，安装即可，无需配置。当然也可以自定义一些图标，想来没什么意义。 highlight-selectedhighlight-selected是对选中的内容以及在文中的相同内容高亮。当然也可以通过设置来确定选定框的样式，这里使用默认。 language-dockerlanguage-docker支持Docker语法高亮，以后估计会用到。 linterlinter是一个语法检查插件，它只是一个框架，针对不同语言需要安装不同的具体插件。AtomLinter是各个语言具体语法检测插件的合集网址，可以根据后续实际使用来进行选择。 linter-shellcheck针对shell做语法检查 linter-docker针对docker做语法检测 linter-docker针对markdown做语法检测 qolorqolor可以让SQL语句语法高亮，方便语义理解。 主题 atom-material-ui 主题 atom-material-syntax 语法高亮]]></content>
+      <categories>
+        <category>Atom</category>
+      </categories>
+      <tags>
+        <tag>Atom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[无线攻击-无线安全测试]]></title>
+    <url>%2F2018%2F06%2F07%2F%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB-%E6%97%A0%E7%BA%BF%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[介绍无线安全测试的理论。 IEEE制定了无线的标准，802负责局域网和城域网。 以太网 令牌环网 无线局域网 网桥]]></content>
+      <categories>
+        <category>无线攻击</category>
+        <category>理论研究</category>
+      </categories>
+      <tags>
+        <tag>无线技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Kali Linux-安装]]></title>
+    <url>%2F2018%2F06%2F07%2FKali-Linux-%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[介绍Kali Linux的虚拟机安装过程。 基础安装VirtualBox安装官网下载VirtualBox，并下载其扩展安装包，完成虚拟机环境安装。 新建Linux系统，并在设置-系统-处理器-启用PAE/NX打钩，设置-系统-主板-启用I/O APIC 同时要在BIOS中开启虚拟化技术，Virtualization Technology-Enabled Kali Linux安装使用图形界面对Kali进行安装，安装选项同其他Linux安装相似。 Kali环境配置更新源文件地址 进入Kali Docs，选择USing Kali Linux-Kali sources.list Repositories，可以查看到官方库，可以复制官方源 执行gedit /etc/apt/sources.list，将官方源复制到该list种，一般已经存在。 Kali Linux跨版本升级（一般不执行）apt-get update &amp;&amp; apt full-upgrade 完成最新更新 Kali Linux更新方法一（保留原版本，尝试没有成功） apt-get update 安装增强工具，按其提示的所缺linux-headers-amd64和linux-headers-4.15.0-kali2-amd64 方法二（升级到下一个版本了） 首先更新最新软件包索引文件，apt-get update(更新源设置好，紧接着执行这个). apt-get upgrade是更新索引里的所有软件，apt-get dist-upgrade会解决依赖性。 apt install linux-headers-*确定要安装的image版本，安装最新版 之后安装image文件，apt-get install linux-image-$(uname -r) 安装Linux头文件（增强工具需要），即apt-get install linux-headers-$(uname -r)本系统的内核架构 VirtualBox增强工具安装 设备安装增强工具 双击将VBoxLinuxAddition.run拖出，之后chmod +x VBoxLinuxAddition.run赋予权限 ./VBoxLinuxAddition.run执行即可完成安装 网络监控插件安装打开Software，搜索NetSpeed，安装即可。 输入法安装 apt-get install gdebi 安装搜狗输入法 在fictx中添加搜狗键盘 flash安装 下载tar.gz安装包 将解压后的so文件移到/usr/lib/mozilla/plugins]]></content>
+      <categories>
+        <category>Kali Linux</category>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Kali Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[云-VPS搭建SS]]></title>
+    <url>%2F2018%2F04%2F01%2F%E4%BA%91-VPS%E6%90%AD%E5%BB%BASS%2F</url>
+    <content type="text"><![CDATA[Vultr终于趁着活动买了个VPS，所以搭建ss试试。 Vultr购买运气不错，一直想着弄个VPS，今天在注册后，发现充值10送25也算挺好的。而且当时准备使用Paypal也因为麻烦没去做，正好因为这个事情又去做了一下，发现还是比较好弄的，原来学校发的交行卡这么舒服，借记卡直接就绑定了，瞬间没钱，不过1比6的比率还是不错的啦。 VPSVPS只有纽约和迈阿密是2.5美元，所以也没什么好选择，想着先试试怎么搭建再去换好了，反正是练手，而且科学上网确实也是基础，还是要搞一搞的，忽然想到书签还没整理，都是头疼的事情。VPS的选择很常规，就按着选项来好了，不过其中的一些配置都没有去选，一方面是因为不知道，一方面估计应该后面会用到的时候再去配置好了，系统选择了CentOS，本来在Ubuntu之间纠结，想着反正都要去折腾就挨着弄好了。VPS直接购买后，就会在部署，之后就是选择一个远程连接工具去连接他咯。 iTerm 2iTerm 2是macOS上的一个终端软件，相对于原生终端，有自己更加方便的功能，这里由于本人也是第一次使用，所以该终端的使用以后再谈。下载地址iTerm2 使用如下命令链接VPS 1ssh root@[VPSip地址] 之后输入密码即可连接~~ ss环境搭建ss的搭建需要很多步骤，首先要安装git，之后从github安装ss，之后为了可以使用AEAD，需要安装libsodium，过程如下 12# gityum install git 123456789101112# ssyum install python-setuptools &amp;&amp; easy_install pippip install git+https://github.com/shadowsocks/shadowsocks.git@master# dnf安装wget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64/dnf-conf-0.6.4-2.sdl7.noarch.rpmwget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64//dnf-0.6.4-2.sdl7.noarch.rpmwget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64/python-dnf-0.6.4-2.sdl7.noarch.rpmyum install python-dnf-0.6.4-2.sdl7.noarch.rpm dnf-0.6.4-2.sdl7.noarch.rpm dnf-conf-0.6.4-2.sdl7.noarch.rpm# libsodium安装dnf install libsodium python34-pippip3 install git+https://github.com/shadowsocks/shadowsocks.git@master 配置文件创建/etc/shadowsocks.json文件。 12345678910111213# 创建vim /etc/shadowsocks.json# 内容&#123; "server":"0.0.0.0", "server_port":443, "local_address":"127.0.0.1", "local_port":1080, "password":"xxxxxxxxxxx", "timeout":300, "method":"aes-256-cfb", "fast_open":false&#125; 防火墙12345678# 安装防火墙yum install firewalld# 启动防火墙systemctl start firewalld# 端口号是你自己设置的端口firewall-cmd --permanent --zone=public --add-port=443/tcpfirewall-cmd --reload 运行要在后台运行： 1234# 此代码是后台运行的代码，不能查看现阶段情况ssserver -c /etc/shadowsocks.json -d start# 此代码是直接执行的，实时的可以看到所有的连接情况ssserver -c /etc/shadowsocks.json 加速centos7使用如下方法 12345wget --no-check-certificate -O rskernel.sh https://raw.githubusercontent.com/uxh/rskernel/master/rskernel.sh &amp;&amp; bash rskernel.shyum install net-tools -y &amp;&amp; wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh &amp;&amp; chmod +x appex.sh &amp;&amp; bash appex.sh install# nyy 手机客户端ios使用pp助手下载shadowRocket，然后用pp助手修复闪退，也可以使用FirstWingy。传输的时候有个混淆，测试下发现不能用。 mac客户端下载ss-ngmac客户端，之后解压使用即可，然后设置自己的服务器地址和密码即可。 windows客户端下载ss-windows,之后解压直接使用，这里配置好服务器和端口后，有一个连接端口1080，这里可以使用xx-tunnels的配置文件来进行访问控制。 Android客户端下载ss-android,之后手机安装apk，输入服务器和端口使用即可。]]></content>
+      <categories>
+        <category>服务器</category>
+        <category>Vultr</category>
+      </categories>
+      <tags>
+        <tag>VPS</tag>
+        <tag>ss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[时光]]></title>
+    <url>%2F2018%2F04%2F01%2F%E6%97%B6%E5%85%89%2F</url>
+    <content type="text"><![CDATA[时光轻轻，忘去，应以好事为之，方得本心。 关于隔绝私以为人有时候真的该静静的去停下来，看看风景，想想事情，就会有一些新的感悟。从上一次微博搭好到现在，已经过去好远好远，担心工作，到担心写不出论文，到担心公司是否适应，担心公司前景，担心自己未来，担心房子，担心身体，担心小论文发表，担心父母，担心毕业论文是否可以，担心答辩，担心第二篇是否同意，一直在担心，直到现在都在担心搬宿舍，担心会不会延期，静静的想想每个阶段真的都是在拼命的去想，耗尽力气，值得开心的是，真的忽然很享受现在的生活了，不在去想赶快进入下一个阶段就好了，虽然每次都知道未来也很难，还是迫不及待的进入下个阶段，认为现阶段的生活都是糟糕透顶了。现在的心情是，终于可以随便去写一些话，不需要考虑是否通顺，不需要考虑是否有语病，想在哪里停顿都可以，这种舒服的感觉可以说是过渡阶段的一种提前放松吧，就像高考后的暑假，本科毕业后的旅行。所以还有时间可以放空，可以静静的休息也不错。 关于成长其实，每一次做完的事情，隔着好久返回来看，都会觉得当初的自己真的好厉害，这样说来好像，自己在退步吧，可是忽然发现成长真的很难界定，忽然想明白一些东西，忽然把自己很固定的思想在改变，或者忽然不那么倔强不那么追求完美，总之，成长好像并不需要去用厉不厉害去界定，好像之乎于完美，心灵的坦途更该是一种财富。忽然想起了IG.KID退役的时候，说每个人都是不同的，有些人努力了成为王者，而有些人真的只是用来衬托王者的，费劲千辛万苦，还是达不到，类似马龙，类似羽毛球的那个大哥。所以在明知道生活给与你的微小概率，还愿意去热血努力的，才是真的勇敢吧。当然，也许正如成长不是靠厉害来判断，也许一个人对成功也没必要非要数一数二吧，能够突破自己，能够自得其乐，能够有知己相伴，就好，很幸运能遇到这些日子，自己也慢慢的挺过来了，毕业论文的致谢迟迟没有下笔。其实我是一个仪式感很重的人吧， 什么都会弄的很神圣，但又不可得，总会是要坚持什么，不是么？ 关于知识大丈夫折扇谈笑，上至洪荒，下至百流，很是羡慕。每每的想起自己，总是会空虚的感觉毫无学识，后来才慢慢的有所得，也才慢慢的有所自信，深以为技能对个人武装的力量之大。当然还有那堪堪及格的身体素质，所以在看到别人叱咤风云时，还是希望也会有自己的一份天地。所以好好的学一些东西，真的很好。前天开始，买了cos的知乎，发现原来是文字直播，把cloud关掉了，把一些密码分类，把邮箱处理掉，把云服务器买一下，下一步就是VPS搭建ss，搭建微博，然后今天又遇到了gitbook，挺好的正好可以用来整理书签。还有协议grs时期的文件也可以整理了，到时候把论文程序github下，又要学下git了，感觉自己真的是神经大条= =，每次都会把一些东西忘掉，也是很不讲道理。索性每次回忆也还算不错，想着真的要markdown所有东西了，忽然又发现markdown的快捷键，pycharm的快捷键，sublimeText的快捷键都忘掉了，很尴尬，还是要记录呀！有很多事情可以去完成，感觉也还是不错的，顺便记录下发博客的过程总是不错的。 1234hexo new 'name'hexo d -ghexo s# password number]]></content>
+      <categories>
+        <category>Idea</category>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Free</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[计算机视觉01-图像处理基础]]></title>
+    <url>%2F2017%2F09%2F25%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%8901-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[本来想着毕业论文要用机器学习去做一些东西的，最后还是用了传统的方法，这个坑既然开始，就在结束时候填上好了。未完待续。。。]]></content>
+      <categories>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+        <tag>图像处理基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python图像处理-第三方库安装]]></title>
+    <url>%2F2017%2F09%2F08%2FPython%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[本部分介绍用 Python 进行图像处理的前期准备工作，即第三方库的安装 Python 版本说明版本介绍本人使用的是 mac 系统，所以同时存在两个版本 2.7 和 3.5。其中 2.7 版本为系统自带版本， 3.5 为自己安装的版本。 版本路径2.7 的路径是在 /Library/Python/2.7 3.5 的路径是在 /Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5 可以通过 which python 进行查询，结果如图所示 所以在安装第三库的时候，可以进行自动安装和手动安装，但是需要注意安装的位置。 版本使用在是用 Python 的时候，要注意版本。 12345# python 2.7$ python xx.py# python 3.5$ python3 xx.py Pip 的安装Pip 介绍pip 是一个 Python 包管理工具，主要是用于安装 PyPI 上的软件包，可以替代 easy_install 工具。 官方下载 [Pip | Github] 开发文档 [Pip | 开发文档] 参考博客 [Pip | 参考] 知乎参考 [Pip | 知乎参考] Pip 版本由于使用的 Python 不同，所以每个版本下对应的 Pip 也要分别安装。 python2.7 对应 pip2，python3.5 对应 pip3，当然系统默认对于 pip 有一个对应的版本，可以是 pip2 也可以是是 pip3。就和 python 对应于 python2.7 还是 python3.5 一样。 可以用如下方式查看 python 和 pip 对应哪个版本 12$ python --version$ pip --version 对于其默认对应的版本可以进行修改，如下： 1234# 修改为 which pip3 或 pip2 的路径$ alias pip=/Library/Frameworks/Python.framework/Versions/3.5/bin/pip3# 解除修改$ unalias pip 为了区分，我们还是按照系统原有的设置， python 对应 python2.7， pip 对应 pip2。如果想用高版本的时候我们直接使用 python3 和 pip3 来进行操作。 Pip 安装get-pip.py 安装下载 [get-pip.py] 然后执行 12$ python get-pip.py$ python3 get-pip.py easy_install 安装直接在终端输入如下命令 1$ sudo easy_install pip Pip 使用安装软件1234# 安装软件$ pip install xxx# 升级某软件$ pip install -U xxx 查看具体安装文件1$ pip show --files SomePackage 查看哪些软件需要更新1$ pip list --outdated Requirements文件安装依赖软件Requirements文件 一般记录的是依赖软件列表，通过pip可以一次性安装依赖软件包: 123$ pip xxx &gt; requirements.txt$ pip install -r requirements.txt 搜寻1$ pip search pycuda Pip 升级1$ pip install -U pip PIL 官方下载 [PIL | 官方下载] 官方文档 [PIL | 官方文档] 官方下载 [Pillow | Github] 官方文档 [Pillow | 官方文档] PIL 介绍PIL : Python Imageing Library，是 Python 平台上的图像处理标准库，但是仅支持 Python2.7 ，志愿者在 PIL 基础上进行修改，形成了新的库 Pillow。 Pillow 安装1234# 未安装$ pip install Pillow# 升级$ pip install -U Pillow Matplotlib 官方网站 [Matplotlib | 官方网站] 官方文档 [Matplotlib | 官方文档] 介绍处理数学运算，绘制表格，或者在图像上绘点、直线和曲线等，是一个可以跨平台生成各种硬拷贝格式和交互式环境的出版品质量图。 安装1234# For Python 2.7$ pip2 install matplotlib# For Python 3.4$ pip3 install matplotlib NumPy 官方网站 [NumPy | 官方网站] 官方文档 [NumPy | 官方文档] 介绍NumPy 是非常有名的 Python 科学计算工具包，其中包含了大量有用的思想，比如数组对象和线性代数函数，可以实现数组中的重要操作，以及图像变换，对变换进行建模、图像分类，图像聚类等。 安装1234# For Python 2.7$ pip2 install numpy# For Python 3.4$ pip3 install numpy]]></content>
+      <categories>
+        <category>图像处理</category>
+        <category>Python工具安装</category>
+      </categories>
+      <tags>
+        <tag>Pillow</tag>
+        <tag>Pil</tag>
+        <tag>Pip</tag>
+        <tag>Matplotlib</tag>
+        <tag>NumPy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo-Next主题高级优化]]></title>
+    <url>%2F2017%2F08%2F28%2FHexo-Next%E4%B8%BB%E9%A2%98%E9%AB%98%E7%BA%A7%E4%BC%98%E5%8C%96%2F</url>
+    <content type="text"><![CDATA[介绍 hexo 的 NexT 更进一步的优话配置 添加「Fork me on github」在 [代码样式] 选择样式代码，然后粘贴刚才复制的代码到 themes/next/layout/_layout.swig 文件中，放置在在 &lt;div class=&quot;headband&quot;&gt;&lt;/div&gt; 的下面，并把 href 改为你的 github 地址。 修改``代码块自定义样式打开 \themes\next\source\css\_custom\custom.styl ,向里面加入 123456789101112131415// Custom styles.code &#123; color: #ff7600; background: #fbf7f8; margin: 2px;&#125;// 大代码块的自定义样式.highlight, pre &#123; margin: 5px 0; padding: 5px; border-radius: 3px;&#125;.highlight, code, pre &#123; border: 1px solid #d6d6d6;&#125; 修改文章内链接文本样式修改文件 themes\next\source\css\_common\components\post\post.styl ，在末尾添加如下 css 样式，： 1234567891011// 文章内链接文本样式.post-body p a&#123; color: #0593d3; border-bottom: none; border-bottom: 1px solid #0593d3; &amp;:hover &#123; color: #fc6423; border-bottom: none; border-bottom: 1px solid #fc6423; &#125;&#125; 修改文章底部的那个带#号的标签修改模板 /themes/next/layout/_macro/post.swig ，搜索 rel=&quot;tag&quot;&gt;# ，将 # 换成 &lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt; 在每篇文章末尾统一添加“本文结束”标记在路径 \themes\next\layout\_macro 中新建 passage-end-tag.swig 文件,并添加以下内容 12345&lt;div&gt; &#123;% if not is_index %&#125; &lt;div style="text-align:center;color: #ccc;font-size:14px;"&gt;-------------本文结束&lt;i class="fa fa-paw"&gt;&lt;/i&gt;感谢您的阅读-------------&lt;/div&gt; &#123;% endif %&#125;&lt;/div&gt; 接着打开 \themes\next\layout\_macro\post.swig 文件，在 post-body 之后， post-footer 之前添加代码 12345&lt;div&gt; &#123;% if not is_index %&#125; &#123;% include 'passage-end-tag.swig' %&#125; &#123;% endif %&#125;&lt;/div&gt; 然后打开主题配置文件 _config.yml，在末尾添加 123# 文章末尾添加“本文结束”标记passage_end_tag: enabled: true 在网站底部加上访问量打开 \themes\next\layout\_partials\footer.swig 文件,在 copyright 前添加： 1&lt;script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"&gt;&lt;/script&gt; 合适位置加入如下： 12345&lt;div class="powered-by"&gt;&lt;i class="fa fa-user-md"&gt;&lt;/i&gt;&lt;span id="busuanzi_container_site_uv"&gt; 本站访客数:&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt; 网站底部字数统计1$ npm install hexo-wordcount --save 然后在 /themes/next/layout/_partials/footer.swig 文件尾部加上： 12345&lt;div class="theme-info"&gt; &lt;div class="powered-by"&gt;&lt;/div&gt; &lt;span class="post-count"&gt;Totol Words:&#123;&#123; totalcount(site) &#125;&#125;&lt;/span&gt;&lt;/div&gt; 实现统计功能然后在主题的配置文件 _config.yml 中，配置如下： 123456# Post wordcount display settings# Dependencies: https://github.com/willin/hexo-wordcountpost_wordcount: item_text: true wordcount: true min2read: true 添加顶部加载条只需修改主题配置文件 _config.yml 将 pace: false 改为 pace: true 就行了，你还可以换不同样式的加载条。 在文章底部增加版权信息在目录 next/layout/_macro/ 下添加 my-copyright.swig 1234567891011121314151617181920212223242526272829303132&#123;% if page.copyright %&#125;&lt;div class="my_post_copyright"&gt; &lt;script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"&gt;&lt;/script&gt; &lt;!-- JS库 sweetalert 可修改路径 --&gt; &lt;script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"&gt;&lt;/script&gt; &lt;script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"&gt;&lt;/script&gt; &lt;link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"&gt; &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&lt;a href="&#123;&#123; url_for(page.path) &#125;&#125;"&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&lt;a href="/" title="访问 &#123;&#123; theme.author &#125;&#125; 的个人博客"&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format("YYYY年MM月DD日 - HH:MM") &#125;&#125;&lt;/p&gt; &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;&#123;&#123; page.updated.format("YYYY年MM月DD日 - HH:MM") &#125;&#125;&lt;/p&gt; &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href="&#123;&#123; url_for(page.path) &#125;&#125;" title="&#123;&#123; page.title &#125;&#125;"&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt; &lt;span class="copy-path" title="点击复制文章链接"&gt;&lt;i class="fa fa-clipboard" data-clipboard-text="&#123;&#123; page.permalink &#125;&#125;" aria-label="复制成功！"&gt;&lt;/i&gt;&lt;/span&gt; &lt;/p&gt; &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class="fa fa-creative-commons"&gt;&lt;/i&gt; &lt;a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt; &lt;/div&gt;&lt;script&gt; var clipboard = new Clipboard('.fa-clipboard'); clipboard.on('success', $(function()&#123; $(".fa-clipboard").click(function()&#123; swal(&#123; title: "", text: '复制成功', html: false, timer: 500, showConfirmButton: false &#125;); &#125;); &#125;)); &lt;/script&gt;&#123;% endif %&#125; 在目录 next/source/css/_common/components/post/ 下添加 my-post-copyright.styl 123456789101112131415161718192021222324252627282930313233343536373839404142434445.my_post_copyright &#123; width: 85%; max-width: 45em; margin: 2.8em auto 0; padding: 0.5em 1.0em; border: 1px solid #d3d3d3; font-size: 0.93rem; line-height: 1.6em; word-break: break-all; background: rgba(255,255,255,0.4);&#125;.my_post_copyright p&#123;margin:0;&#125;.my_post_copyright span &#123; display: inline-block; width: 5.2em; color: #b5b5b5; font-weight: bold;&#125;.my_post_copyright .raw &#123; margin-left: 1em; width: 5em;&#125;.my_post_copyright a &#123; color: #808080; border-bottom:0;&#125;.my_post_copyright a:hover &#123; color: #a3d2a3; text-decoration: underline;&#125;.my_post_copyright:hover .fa-clipboard &#123; color: #000;&#125;.my_post_copyright .post-url:hover &#123; font-weight: normal;&#125;.my_post_copyright .copy-path &#123; margin-left: 1em; width: 1em; +mobile()&#123;display:none;&#125;&#125;.my_post_copyright .copy-path:hover &#123; color: #808080; cursor: pointer;&#125; 修改 next/layout/_macro/post.swig 12345&lt;div&gt; &#123;% if not is_index %&#125; &#123;% include 'my-copyright.swig' %&#125; &#123;% endif %&#125;&lt;/div&gt; 修改 next/source/css/_common/components/post/post.styl文件，在最后一行增加代码 1@import "my-post-copyright" 在 /scaffolds/post.md 文件中添加： 1copyright: true 隐藏网页底部powered By Hexo / 强力驱动打开 themes/next/layout/_partials/footer.swig ,使用 &lt;!-- --&gt;隐藏之间的代码即可，或者直接删除。 添加宠物1npm install -save hexo-helper-live2d 然后打开Hexo/blog/themes/next/layout的 _layout.swig ,将下面代码放到 &lt;/body&gt; 之前： 1&#123;&#123; live2d() &#125;&#125; 然后在在目录配置文件的 _config.yml 中添加参数 123live2d: model: wanko bottom: -30 [图标样式预览]这里提供宠物名称：Gantzert_Felixander sEpsilon2.1 haru miku ni-j nico nito nipsilon nietzsche shizuku tsumiki wanko z16 hibiki koharu haruto Unitychan tororo hijiki 特别感谢具体可以参考该文章 hexo的next主题个性化配置教程]]></content>
+      <categories>
+        <category>Blog Build</category>
+        <category>NexT Theme</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo-Coding搭建博客]]></title>
+    <url>%2F2017%2F08%2F26%2FHexo-Coding%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[已经实现了 github 的部署，但是为了追求速度，还希望其部署在 coding上 配置「coding」注册账号进入 [coding | 官网] 注册账号，最好使用 github 的邮箱，这样生成的 ssh 一致，方便配置。 生成「ssh」如果之前没有生成过 ssh，可以通过以下命令生成，这里邮箱为 coding 注册邮箱，如果之前已经生成过 ssh，则在 ~/.ssh/id_rsa.pub 里放置了公钥密码。 12$ ssh-keygen -t rsa -b 4096 -C "你的邮箱"$ ssh-add 绑定「ssh」将生成的 id_rsa.pub 里的内容复制到 coding 的 ssh公钥 里即可。输入下面命令，进行验证。 1$ ssh -T git@git.coding.net 新建项目建立 name.coding.me 项目 「Hexo」配置对目录配置文件 _config.yml 进行如下配置 123456deploy: type: git repository: github: git@github.com:sxzqcsq/sxzqcsq.github.io coding: git@git.coding.net:junlinhz/junlinhz.coding.me branch: master 在目录的 source 下建立一个文件 Staticfile 1touch Staticfile 随后进行微博生成，提交。 「Pages」服务部署在项目里的 pages服务 进行相关的域名设置。 至此， coding 上部署 Hexo 就基本完毕了。]]></content>
+      <categories>
+        <category>Blog Build</category>
+        <category>Configure</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[扬起一尘沙]]></title>
+    <url>%2F2017%2F08%2F23%2F%E6%89%AC%E8%B5%B7%E4%B8%80%E5%B0%98%E6%B2%99%2F</url>
+    <content type="text"><![CDATA[一把沙扔出去，只能抓住一些，你会选什么 随心最近一直在纠结一些关于工作学习的问题，你会为了一个很厉害的成就去委屈自己的初衷本身就是一个很难的话题，你喜欢的，或者有前途的，是否存在矛盾也不得而知。你唯一知道的就是你现在喜欢什么，你将来的期待的样子，剩下的都是道听途说，众说纷纭了，有的说这个号，有的说那个号，其实人就是要有一个自己判断，当然话说回来还是因为自己不够出众，要么出众要么出局的想法也是建立在出众的标准上的，你评价出众的标准不同，你对待自己的放是不同得到的结果也是完全不同的。所以要么随缘，要么随心，随缘以后可能喜欢，可能无语，随心以后，当心无悔。 人生期待值人总是会拿一些可有可无的东西去比较，比如小学初中都是谁谁谁第一啦，谁谁谁学习好，高中都是谁谁谁考了什么，谁谁谁学到专业多热门了，自己喜欢的是什么都是在选择之后去决定的，还是挺悲哀的。每个人对人生期待值都在不停的暴涨，你每天在满足了自己的既定目标后，所带来的还是不停的不满足，所以不满是向上的车轮么，谁知道嘞。不过唯一确定的是在你有了自己标准下的满足之后，你对一些事情也会变的毫无所谓，除非是你还想提高自己的标准证明一番，否则所有的都是一种别人眼里的装X行为，自己对自己阿Q精神的展现。大体来说还是尽力尽心过后，大致满意即可吧。 关于相看两不厌今天知乎上看到，点击最高的文章，三点。 对期待值的管理 阈值自控 应对主观时空扭曲 期待值主要体现在别人对于一些平时表现好的人，就会要求其越来越好，一些平时树立的好好形象，一旦崩塌，就会舆论一片倒，不会接受一点包容，所以在职场，爱情都不要急着去表现自己，给自己一些空间，别让别人对你期待值过高而现实往往一般，厉害的大神都是平时铺垫，最后收获，在非必要情况下，不要把骄傲放身上，压抑自己的表现欲和欲望。 阈值自控一个人在长期的高强度刺激下，就会对一些事情索然无味，豪门公子哥对金钱视若粪土，这就是不想创公司的马云，脸盲的强东，和一无所有的健林的一些感受吧，感觉也挺对的，一个东西无限刺激你的时候，你也就会索然，这其实在我看来是期望值不断被满足，不断刷新带来的副作用吧。 时空扭曲这个观点其实挺好的，人的记忆增长随着不断年龄增长而比例变小，五岁到六岁增长了原来的五分之一，而二十六到二十七也就增长了原来的二十六分之一。再加上每天越来越机械重复的工作，你会发现时间一转而逝。所以跳出舒适圈，之后的每天都是全新的才会让你不那么觉得时光匆匆。 一个长不大的人。 以上。]]></content>
+      <categories>
+        <category>Idea</category>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Free</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo-NexT第三方服务集成]]></title>
+    <url>%2F2017%2F08%2F23%2FHexo-NexT%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E9%9B%86%E6%88%90%2F</url>
+    <content type="text"><![CDATA[本篇主要将 NexT 第三方服务集成包括评论、数据统计、内容分享、搜索等。 评论系统NexT 支持多款评论系统。 如需取消某个 页面/文章 的评论，在 md 文件的 front-matter 中增加 comments: false DISQUS编辑主题 _config.yml 文件 ，将 disqus 下的 enable 设定为 true,同时提供您的 shortname。count 用于指定是否显示评论数量。这里貌似要到 disqus 去注册，然后填入 shortname 才能使用，而且被 qiang 里以后也不显示评论，所以这里不予启用。 1234disqus: enable: true shortname: count: true HyperComments 登录官方网站 [HYPERCOMMENTS]，注册使用免费服务，按步骤进行。进入个人中心的设置，里面有 Moderators 下的 ID 输入即可开通，当然也可以进行一些设置(需要付费)。 修改主题配置文件 _config.yml 以下配置： 12# Hypercommentshypercomments_id: 94751 网易云跟帖本人对于网易有特殊情结，所以想试下国产的好不好用。登录 [网易云跟帖]，获取 Product Key。很不幸，好像我在写的时候于 2017年8月1号 关闭。 LiveRe 进入 [LiveRe | 官网]进行注册 使用 city 版本进行安装 进入代码管理的一般网站，获取 data-uid 数据统计与分析数据统计也有好多第三方，这里使用百度来进行统计 百度统计登录 [百度统计]，然后注册站长模块，进入 管理 代码获取，将 hm.js? 后面的统计脚本 id 放入 baidu_anaLytics 下。 12# Baidu Analytics IDbaidu_analytics: 阅读次数统计阅读次数统计使用 LeanCloud LeanCloud在注册完成 [LeanCloud]后，创建新应用，随意输入名称。创建 class 为 Counter 名字必须是这个，然后获取其中的 App ID 和 App Key，放到指定位置。 1234leancloud_visitors: enable: false app_id: #&lt;app_id&gt; app_key: #&lt;app_key&gt; 内容分享服务JiaThis在主题配置文件 _config.yml 修改 jiathis 1jiathis: true 搜索服务Swiftype 站内搜索 前往 [Swiftype] 创建搜索引擎 定制激活搜索， install search，获得 swiftype_key 更新主题配置 12 # Swiftype Search API Keyswiftype_key: Swiftype 不再免费好像，所以不使用 Local Search 安装 hexo-generator-searchdb，在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑站点配置文件 _config.yml ，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 编辑主题配置文件 _config.yml ，启用本地搜索功能： 123# Local searchlocal_search: enable: true 推荐使用该方法，速度很快，也不麻烦。 MathJax编辑主题配置文件 _config.yml，将 mathjax 设定为 true 即可。语法见[MathJax] 12# MathJax Supportmathjax: 自动打开新建的「md文件」 在主目录的 scripts 建立 JavaScript 脚本 mac 用户输入如下脚本 1234var exec = require('child_process').exec;hexo.on('new', function(data)&#123; spawn('start "markdown editor绝对路径.exe" ' + data.path);&#125;); 至此第三方服务集成介绍就此结束。]]></content>
+      <categories>
+        <category>Blog Build</category>
+        <category>NexT Theme</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo-NexT主题优化配置]]></title>
+    <url>%2F2017%2F08%2F22%2FHexo-Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[介绍 Hexo 下 Next 主题的优化配置问题 相关网站 Hexo 官网 - [Hexo] Hexo 文档 - [Hexo | 文档] Hexo 相关 - [Hexo | 配置] Hexo 命令 - [Hexo | 指令] NexT 官网 - [NexT] 主题设定 - [NexT | 主题设定] 第三方服务 - [NexT | 第三方服务] 图标服务 - [Font Awesome] 设置「RSS」 安装 hexo-generator-feed 插件 12$ cd your-hexo-site$ npm install hexo-generator-feed --save 添加配置，在本地 hexo 根目录下的 _config.yml 文件中添加如下配置 12345678910# Extensions## Plugins: http://hexo.io/plugins/#RSS订阅plugin:- hexo-generator-feed#Feed Atomfeed:type: atompath: atom.xmllimit: 20 添加主题配置，在主题 _config.yml 文件中添加如下配置。 1rss: /atom.xml 添加「标签」页面 新建标签页面 12$ cd your-hexo-site$ hexo new page tags 在 ~/junlinhz/source/tags/index.md 中设置类型为 tags ，页面内容如下： 123456---title: tagsdate: 2017-08-22 19:37:40type: "tags"comments: false--- 修改主题 _config.yml 文件，在 menu 下添加： 12menu: tags: /tags/ 添加「分类」页面 在 Hexo 目录下，新建一个页面，命名为 categories 12$ cd your-hexo-site$ hexo new page categories 在 ~/junlinhz/source/categories/index.md 中设置类型为 tags ，页面内容如下： 123456---title: categoriesdate: 2017-08-22 19:54:53type: "categories"comments: false--- 修改主题 _config.yml 文件，在 menu 下添加： 12menu: categories: /categories/ 设置「字体」为了解决 Google Fonts API 不稳定的问题，NexT 在 5.0.1 中引入此特性。 通过此特性，你可以指定所使用的字体库外链地址；与此同时，NexT开放了 5 个特定范围的字体设定，他们是： 全局字体：定义的字体将在全站范围使用 标题字体：文章内标题的字体（h1, h2, h3, h4, h5, h6） 文章字体：文章所使用的字体 Logo 字体：Logo 所使用的字体 代码字体： 代码块所使用的字体 各项所指定的字体将作为首选字体，当他们不可用时会自动 Fallback 到 NexT 设定的基础字体组： 非代码类字体：Fallback 到 &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif 代码类字体： Fallback 到 consolas, Menlo, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, monospace 另外，每一项都有一个额外的 external 属性，此属性用来控制是否使用外链字体库。 开放此属性方便你设定那些已经安装在系统中的字体，减少不必要的请求（请求大小）。 可以在主题的 _config.yml 的字体处修改，内容如下 12345678910111213141516171819202122232425262728293031font: enable: true # 外链字体库地址，例如 //fonts.googleapis.com (默认值) host: # 全局字体，应用在 body 元素上 global: external: true family: Monda # 标题字体 (h1, h2, h3, h4, h5, h6) headings: external: true family: Roboto Slab # 文章字体 posts: external: true family: # Logo 字体 logo: external: true family: Lobster Two size: 24 # 代码字体，应用于 code 以及代码块 codes: external: true family: PT Mono 设置「代码高亮主题」NexT 使用 Tomorrow Theme 作为代码高亮，共有5款主题供你选择。 NexT 默认使用的是 白色的 normal 主题，可选的值有 normal，night， night blue， night bright， night eighties： 更改 highlight_theme 字段，将其值设定成你所喜爱的高亮主题，例如： 1highlight_theme: night bright 侧边栏社交链接侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。 两者配置均在主题的 _config.yml 中。 链接放置在 social 字段下，一行一个链接。其键值格式是 显示文本: 链接地址。 12345678# Social linkssocial: GitHub: https://github.com/your-user-name Twitter: https://twitter.com/your-user-name 微博: http://weibo.com/your-user-name 豆瓣: http://douban.com/people/your-user-name 知乎: http://www.zhihu.com/people/your-user-name # 等等 设定链接的图标，对应的字段是 social_icons。其键值格式是 匹配键: Font Awesome 图标名称， 匹配键 与上一步所配置的链接的 显示文本 相同（大小写严格匹配），图标名称 是 Font Awesome 图标的名字（不必带 fa- 前缀）。 enable 选项用于控制是否显示图标，你可以设置成 false 来去掉图标。 1234567# Social Iconssocial_icons: enable: true # Icon Mappings GitHub: github Twitter: twitter 微博: weibo 设置「打赏」功能在主题 _config.yml 中添加打赏图片即可。关于打赏图片的制作，可以登录 [支付宝 | 扫码发放平台] 进行制作，选取适合 PC 的图片即可。微信制作的话比较麻烦，需要现在手机端生成自己的收款码，再传到电脑上，将其进行截取。 123reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！wechatpay: /path/to/wechat-reward-imagealipay: /path/to/alipay-reward-image 友情链接可以将朋友的一些链接挂到自己的网站，编辑主题 _config.yml 进行设置。 1234# titlelinks_title: Linkslinks: Title: http://example.com/ 站点建立时间这个会在站底显示出来，在主题 _config.yml 编辑 since 字段。 1since: 2017 设置「动画效果」动画效果的设置需要在加载完网页时候才会显示，如果追求速度不建议使用，编辑主题 _config.yml 设置 use_motion 字段。 12use_motion: true # 开启动画效果use_motion: false # 关闭动画效果 设置「背景动画」自带有两种背景动画可以设置。在主题 _config.yml 搜索 canvas_nest 或 three_waves 即可，但只能设置一种。 1234567# canvas_nestcanvas_nest: true //开启动画canvas_nest: false //关闭动画# three_wavesthree_waves: true //开启动画three_waves: false //关闭动画 这里还可对于 canvas_nest 还可继续进行修改，增加一些更动态的动画，但是我在尝试之后发现会有明显的卡顿，就关闭了。 12345# canvas_linescanvas_lines: false# canvas_spherecanvas_sphere: false 设置「icon」[图标制作网站] 12# Put your favicon.ico into `hexo-site/source/` directory.favicon: /favicon.ico 至此主题类的优化就基本完成，下面将就第三方服务插件的设置做出介绍。]]></content>
+      <categories>
+        <category>Blog Build</category>
+        <category>NexT Theme</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hello new world]]></title>
+    <url>%2F2017%2F08%2F21%2Fhello-new-world%2F</url>
+    <content type="text"><![CDATA[喜欢鼓捣一些自己感兴趣的所以还是有所成功吧~ 绪2017年8月20日，注册了阿里云，买了自己喜欢的域名，纠结良多，选定了junlinhz.top，其实没那么大的志气，但是单纯的就想霸气一点，想着和小二上酒的气势相符，总要做些自己想去做的，喜欢做的。 急2017年8月21日，寻思了好久的云服务器，感觉还是略微有点性价比的问题，一堆的好玩的东西值得自己去学习，忽然就来了精神，一整天都在默默查资料，搞东西，感觉总结真的是一件成就感满满的事情，羡慕余弦大大的博客，很拉风，连头像都看的那么让人激动EVILCOS。所以想着什么都是可以模仿并去超越的，所以想着他的框架WordPress要不要去实现。后来看到了知乎上用github和Hexo搭建也还是很不错的，而且省去了备案和VPS的钱也是很好接受的，想了下直接套框架进去，顺便研究了下GIT也是不错。不过偶然发现的Coding还是眼前一亮。想着先在github上试试也是好的，等框架啥的学会了再放上去也不迟。不过感觉一些第三方插件很酷，还是没有学会用就迫不及待下载MacDown来写东西了。 起其实还是担心着将来，无法言开，几滴小巷落雨，睁不开阳光回转，那年你笑我痴狂花自会开，今朝我把风皱起一池波澜，看前方黑洞洞，待我前去，杀踏歌干干净净~~~]]></content>
+      <categories>
+        <category>Idea</category>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>Free</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo-官方文档]]></title>
+    <url>%2F2017%2F08%2F20%2FHexo-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>Blog Build</category>
+        <category>Configure</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+</search>

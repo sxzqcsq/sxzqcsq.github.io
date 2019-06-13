@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>JUNLINHZ</title>
+  <subtitle>def free</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://junlinhz.top/"/>
+  <updated>2018-07-12T13:52:27.000Z</updated>
+  <id>http://junlinhz.top/</id>
+  
+  <author>
+    <name>Scorpio君临</name>
+    <email>shenqian5211@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Security+-02-网络安全-网络基本概念和术语</title>
+    <link href="http://junlinhz.top/2018/06/20/2018-06-20-security-02-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD/"/>
+    <id>http://junlinhz.top/2018/06/20/2018-06-20-security-02-网络安全-网络基本概念和术语/</id>
+    <published>2018-06-20T09:22:00.000Z</published>
+    <updated>2018-07-12T13:52:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍基本概念和相关的术语</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="网络组件"><a href="#网络组件" class="headerlink" title="网络组件"></a>网络组件</h1><ul>
+<li>设备<ul>
+<li>集线器 Hub 单链路争用状态 不能分离冲突域</li>
+<li>交换机 Switches 工作在二层（数据链路层）帧 绑定端口和MAC 流量过滤 端口镜像 端口安全 端口禁用 VLANs（虚拟局域网）-数据链路层</li>
+<li>路由器 Routers 连接局域网和广域网 工作在三层（网络层） 数据包</li>
+<li>代理服务器</li>
+<li>防火墙 Firewall 非军事区域DMZ 在内网和外网之间 FTP服务器</li>
+<li>负载均衡器</li>
+<li>统一安全网关（USG）</li>
+</ul>
+</li>
+<li><p>介质</p>
+<ul>
+<li>同轴电缆 数字机顶盒（模拟转换成电子） 同轴电缆连接到数字机顶盒，传递的是模拟信号 贵 抗干扰能力强</li>
+<li>双绞线 用到四根线，剩下的是备份线 两两缠绕是为了避免信号串扰</li>
+<li>光缆 里面是玻璃，光信号折射 防窃听 抗干扰 价格贵 安装要求高 服务器 数据阵列存储</li>
+<li><p>缆线问题</p>
+<ul>
+<li>噪音 微波炉会产生磁场干扰缆线信号</li>
+<li>衰减 随着距离增加减弱</li>
+<li>串扰 一根线缆上的信号溢出到另一根线缆中</li>
+<li>电缆防火等级</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>OSI 七层模型 （最基本） 从上到下<ul>
+<li>应用层 HTML FTP SMTP</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>传输层 TCP UDP</li>
+<li>网络层 IP ICMP IGMP</li>
+<li>数据链路层 ARP</li>
+<li>物理层</li>
+</ul>
+</li>
+<li><p>IP</p>
+<ul>
+<li>ipv4 ABCDE四类地址 各类地址中有各自的私有地址</li>
+</ul>
+</li>
+<li><p>TCP 四层协议</p>
+<ul>
+<li>可靠协议</li>
+<li>SYN</li>
+<li>SYN/ACK</li>
+<li>ACK</li>
+<li>https首先先建立tcp三次握手</li>
+<li>syn泛滥攻击 收到B响应的SYN/ACK后，不回复ACK 使用成千上万机子 这样就会存在成千上万个线程 进行等待 线程增加后到CPU资源耗尽 Dos攻击 设置会话超时 分析请求IP 流量清洗预防Dos攻击 购买供应商流量清洗服务 在WEB服务设备前加流量清洗设备</li>
+<li>会话劫持 预测TCP序列号，欺骗B，让B误以为是正常会话用户</li>
+</ul>
+</li>
+<li>UDP 用户数据报文协议<ul>
+<li>单向连接 速度快</li>
+<li>端口对应的协议 tftp 69 udp  （考点 tcp/udp 端口 协议名）</li>
+</ul>
+</li>
+<li>ICMP 互联网控制消息协议<ul>
+<li>traceroute  linux</li>
+<li>tracert windows</li>
+<li>显示数据包在IP网络经过的路由器的IP地址</li>
+<li>超大号的ICMP数据包 改变ping数据包的大小 或者 多台PC进行ping</li>
+<li>smuf 攻击 （考点） 发送ICMP包给一个局域网的广播地址，广播地址里的所有计算机都会给一个响应 ICMP的源地址改为受害者的地址 这样返回给受害者地址 广播地址里如果有上万台机器 这样返回给受害者的数据会造成Dos攻击</li>
+</ul>
+</li>
+<li>ARP 二层 数据链路层<ul>
+<li>地址解析协议 将IP地址映射为MAC地址</li>
+<li>数据链路层是通过mac地址寻址，才能将数据包送到路由器上，通过arp协议解析路由器ip对应的mac地址，这样就可以将数据包送到路由器上</li>
+<li>电脑内存上有arp缓存表 路由器上也有arp缓存表</li>
+<li>arp投毒 篡改arp缓存表 将网关ip对应的mac地址修改为黑客自己的mac地址 这样隐私信息会被送到黑客电脑上去 用户登录后显示上不了网 arp欺骗攻击</li>
+<li>另外可以修改路由器的arp缓存表 修改合法用户的mac地址对应的ip为黑客ip 实现了中间人攻击</li>
+<li>sniffer抓包</li>
+</ul>
+</li>
+<li>HTTP 超文本协议 应用层 80 明文传输</li>
+<li>HTTPS 超文本传送协议安全版 密文传输</li>
+<li>域名系统 DNS<ul>
+<li>域名解析 将域名转化为IP地址</li>
+<li>DNS区域传送使用TCP协议（考点）不同DNS服务要更新要使用TCP协议 可靠 包大小限制</li>
+<li>其他的DNS传送使用UDP协议</li>
+<li>DNS扩展</li>
+</ul>
+</li>
+<li>网卡</li>
+<li>网络操作系统</li>
+<li>协议</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍基本概念和相关的术语&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Security+" scheme="http://junlinhz.top/categories/Security/"/>
+    
+      <category term="网络安全" scheme="http://junlinhz.top/categories/Security/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="Security+" scheme="http://junlinhz.top/tags/Security/"/>
+    
+      <category term="安全概念" scheme="http://junlinhz.top/tags/%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Security+-01-安全基本概念</title>
+    <link href="http://junlinhz.top/2018/06/20/2018-06-20-security-01-%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://junlinhz.top/2018/06/20/2018-06-20-security-01-安全基本概念/</id>
+    <published>2018-06-20T08:08:00.000Z</published>
+    <updated>2018-07-12T13:52:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>安全相关的概念介绍</p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="Security-Fundamentals-安全基础"><a href="#Security-Fundamentals-安全基础" class="headerlink" title="Security Fundamentals 安全基础"></a>Security Fundamentals 安全基础</h1><ul>
+<li>The Information Security Cycle 信息安全生命周期</li>
+<li>Information Security Control 信息安全控制</li>
+<li>Authentication Methods 认证方法</li>
+<li>Cryptography Fundamental 密码学基础</li>
+<li>Security Policy Fundamentals 安全策略基础</li>
+</ul>
+<h2 id="信息安全"><a href="#信息安全" class="headerlink" title="信息安全"></a>信息安全</h2><ul>
+<li>对可用信息或信息资源的保护</li>
+<li>负有重要职责的个人或组着的机密信息的必要的安全手短</li>
+<li>减少商业风险和降低因为其他后果的丢失关键数据的可能性</li>
+</ul>
+<p><strong>三个特性 机密性 完整性 可用性（可靠性）</strong></p>
+<h2 id="保护对象"><a href="#保护对象" class="headerlink" title="保护对象"></a>保护对象</h2><ul>
+<li>Data 数据</li>
+<li>Resource 资源</li>
+</ul>
+<h2 id="Risk-风险"><a href="#Risk-风险" class="headerlink" title="Risk 风险"></a>Risk 风险</h2><p>威胁主体和资源的可能性</p>
+<h2 id="Threats-威胁"><a href="#Threats-威胁" class="headerlink" title="Threats 威胁"></a>Threats 威胁</h2><p>威胁主体有意无意的破坏</p>
+<h2 id="A-Vulnerability-漏洞"><a href="#A-Vulnerability-漏洞" class="headerlink" title="A Vulnerability 漏洞"></a>A Vulnerability 漏洞</h2><p>系统存在的弱点或缺陷，配置问题</p>
+<h2 id="Intrusions-入侵"><a href="#Intrusions-入侵" class="headerlink" title="Intrusions 入侵"></a>Intrusions 入侵</h2><p>对信息安全构成威胁的手短</p>
+<h2 id="Attacks-攻击"><a href="#Attacks-攻击" class="headerlink" title="Attacks 攻击"></a>Attacks 攻击</h2><p>分为很多种，物理安全 软件 社会工程学 WEB应用服务 网络</p>
+<h2 id="Controls-控制"><a href="#Controls-控制" class="headerlink" title="Controls 控制"></a>Controls 控制</h2><p>按照既定标准，对各项工作进行安排</p>
+<p>控制类型 Prevention 预防 Detection 检测 Correction 改进 补偿</p>
+<h2 id="CIA-三角"><a href="#CIA-三角" class="headerlink" title="CIA 三角"></a>CIA 三角</h2><p>Confidentiality 机密性 Integrity 完整性 Availability 可用性</p>
+<h2 id="Non-repudiation-抗抵赖"><a href="#Non-repudiation-抗抵赖" class="headerlink" title="Non-repudiation 抗抵赖"></a>Non-repudiation 抗抵赖</h2><p>不可否认性</p>
+<h2 id="Identification-身份识别"><a href="#Identification-身份识别" class="headerlink" title="Identification  身份识别"></a>Identification  身份识别</h2><ul>
+<li>基于你知道的</li>
+<li>基于你拥有的</li>
+<li>基于生物特征</li>
+</ul>
+<h2 id="Authentication-身份认证"><a href="#Authentication-身份认证" class="headerlink" title="Authentication 身份认证"></a>Authentication 身份认证</h2><p>证明你的身份</p>
+<h2 id="Authorization-授权"><a href="#Authorization-授权" class="headerlink" title="Authorization 授权"></a>Authorization 授权</h2><ul>
+<li>确定用户对某一实体的权利或特权</li>
+<li>在此之前，需要进行身份认证和鉴别</li>
+</ul>
+<h2 id="Access-Control-访问控制"><a href="#Access-Control-访问控制" class="headerlink" title="Access Control 访问控制"></a>Access Control 访问控制</h2><ul>
+<li>针对资源、对象或者数据，确定对合法访问者分配权限</li>
+<li>对授权进行管理</li>
+</ul>
+<h2 id="Access-Control-Models-访问控制模型-（考点）"><a href="#Access-Control-Models-访问控制模型-（考点）" class="headerlink" title="Access Control Models 访问控制模型 （考点）"></a>Access Control Models 访问控制模型 （考点）</h2><ul>
+<li>Mandatory Access Control 强制访问控制</li>
+<li>Discretionary Access Control 自由访问控制</li>
+<li>Role-Based Access Control 基于角色的访问控制</li>
+</ul>
+<h2 id="Accounting-and-Auditing-审计"><a href="#Accounting-and-Auditing-审计" class="headerlink" title="Accounting and Auditing 审计"></a>Accounting and Auditing 审计</h2><ul>
+<li>过程的跟踪、记录系统活动和资源访问</li>
+<li>审计：检查记录</li>
+</ul>
+<h2 id="Commen-Security-Practices-通用安全实践"><a href="#Commen-Security-Practices-通用安全实践" class="headerlink" title="Commen Security Practices 通用安全实践"></a>Commen Security Practices 通用安全实践</h2><ul>
+<li>Implicit Deny 默认拒绝 （考点）<br>防火墙规则</li>
+<li>Least Privilege 最小特权</li>
+<li>Separation of duties 职责分离</li>
+<li>Job Rotation 岗位轮换</li>
+<li>Mandatory vacation 强制休假</li>
+<li>Time of Day Restrictions 时间限制</li>
+<li>Privilege Management 权限管理</li>
+</ul>
+<h2 id="User-Name-Password-Authentication-用户名密码认证"><a href="#User-Name-Password-Authentication-用户名密码认证" class="headerlink" title="User Name/Password Authentication 用户名密码认证"></a>User Name/Password Authentication 用户名密码认证</h2><h2 id="Tokens-令牌"><a href="#Tokens-令牌" class="headerlink" title="Tokens 令牌"></a>Tokens 令牌</h2><h2 id="Biometrics-生物特征"><a href="#Biometrics-生物特征" class="headerlink" title="Biometrics 生物特征"></a>Biometrics 生物特征</h2><h2 id="Geolocation-地理位置识别"><a href="#Geolocation-地理位置识别" class="headerlink" title="Geolocation 地理位置识别"></a>Geolocation 地理位置识别</h2><h2 id="Keystroke-Authentication-击键认证"><a href="#Keystroke-Authentication-击键认证" class="headerlink" title="Keystroke Authentication 击键认证"></a>Keystroke Authentication 击键认证</h2><h2 id="Multi-factor-Authenticaton-多因素认证"><a href="#Multi-factor-Authenticaton-多因素认证" class="headerlink" title="Multi-factor Authenticaton 多因素认证"></a>Multi-factor Authenticaton 多因素认证</h2><h2 id="Mutual-Authentication-相互认证"><a href="#Mutual-Authentication-相互认证" class="headerlink" title="Mutual Authentication 相互认证"></a>Mutual Authentication 相互认证</h2><h2 id="Cryptography-密码学"><a href="#Cryptography-密码学" class="headerlink" title="Cryptography 密码学"></a>Cryptography 密码学</h2><h2 id="Encryption-and-Decryption-加密与解密"><a href="#Encryption-and-Decryption-加密与解密" class="headerlink" title="Encryption and Decryption 加密与解密"></a>Encryption and Decryption 加密与解密</h2><h2 id="Ciphers-加密算法"><a href="#Ciphers-加密算法" class="headerlink" title="Ciphers 加密算法"></a>Ciphers 加密算法</h2><h2 id="CipherTypes-加密类型"><a href="#CipherTypes-加密类型" class="headerlink" title="CipherTypes 加密类型"></a>CipherTypes 加密类型</h2><h2 id="Encryption-and-Security-goalpost-加密与安全目标"><a href="#Encryption-and-Security-goalpost-加密与安全目标" class="headerlink" title="Encryption and Security goalpost 加密与安全目标"></a>Encryption and Security goalpost 加密与安全目标</h2><h2 id="Steganographt-隐写术"><a href="#Steganographt-隐写术" class="headerlink" title="Steganographt 隐写术"></a>Steganographt 隐写术</h2><h2 id="A-Key-秘钥"><a href="#A-Key-秘钥" class="headerlink" title="A Key 秘钥"></a>A Key 秘钥</h2><h2 id="Hashing-Encryption-哈希加密"><a href="#Hashing-Encryption-哈希加密" class="headerlink" title="Hashing Encryption 哈希加密"></a>Hashing Encryption 哈希加密</h2><h2 id="Hashing-Encryption-Algorithms-哈希算法"><a href="#Hashing-Encryption-Algorithms-哈希算法" class="headerlink" title="Hashing Encryption Algorithms 哈希算法"></a>Hashing Encryption Algorithms 哈希算法</h2><h2 id="Symmetric-Encryption-对称加密"><a href="#Symmetric-Encryption-对称加密" class="headerlink" title="Symmetric Encryption 对称加密"></a>Symmetric Encryption 对称加密</h2><h2 id="Symmetric-Encryption-Algorithms-对称加密算法"><a href="#Symmetric-Encryption-Algorithms-对称加密算法" class="headerlink" title="Symmetric Encryption Algorithms 对称加密算法"></a>Symmetric Encryption Algorithms 对称加密算法</h2><h2 id="Asymmetric-Encryption-非对称加密"><a href="#Asymmetric-Encryption-非对称加密" class="headerlink" title="Asymmetric Encryption 非对称加密"></a>Asymmetric Encryption 非对称加密</h2><h2 id="Asymmetric-Encryption-Techniques-非对称加密技术"><a href="#Asymmetric-Encryption-Techniques-非对称加密技术" class="headerlink" title="Asymmetric Encryption Techniques 非对称加密技术"></a>Asymmetric Encryption Techniques 非对称加密技术</h2><h2 id="Key-Exchage-密钥交换"><a href="#Key-Exchage-密钥交换" class="headerlink" title="Key Exchage 密钥交换"></a>Key Exchage 密钥交换</h2><h2 id="Digital-Signatures-数字签名"><a href="#Digital-Signatures-数字签名" class="headerlink" title="Digital Signatures 数字签名"></a>Digital Signatures 数字签名</h2><h2 id="Cipher-Suites-加密算法套件"><a href="#Cipher-Suites-加密算法套件" class="headerlink" title="Cipher Suites 加密算法套件"></a>Cipher Suites 加密算法套件</h2><h2 id="Session-Keys-会话密钥"><a href="#Session-Keys-会话密钥" class="headerlink" title="Session Keys 会话密钥"></a>Session Keys 会话密钥</h2><h2 id="Key-Stretching-密钥延伸"><a href="#Key-Stretching-密钥延伸" class="headerlink" title="Key Stretching 密钥延伸"></a>Key Stretching 密钥延伸</h2><h2 id="A-Security-Policy-安全策略"><a href="#A-Security-Policy-安全策略" class="headerlink" title="A Security Policy 安全策略"></a>A Security Policy 安全策略</h2><h2 id="Security-Policy-Components-安全策略组成"><a href="#Security-Policy-Components-安全策略组成" class="headerlink" title="Security Policy Components 安全策略组成"></a>Security Policy Components 安全策略组成</h2><h2 id="Common-Security-Policy-types-通用安全策略类型"><a href="#Common-Security-Policy-types-通用安全策略类型" class="headerlink" title="Common Security Policy types 通用安全策略类型"></a>Common Security Policy types 通用安全策略类型</h2><h2 id="Group-Policy-组策略"><a href="#Group-Policy-组策略" class="headerlink" title="Group Policy 组策略"></a>Group Policy 组策略</h2><h2 id="Security-Document-Categories-安全文档类型"><a href="#Security-Document-Categories-安全文档类型" class="headerlink" title="Security Document Categories 安全文档类型"></a>Security Document Categories 安全文档类型</h2><h2 id="Change-Management-变更管理"><a href="#Change-Management-变更管理" class="headerlink" title="Change Management 变更管理"></a>Change Management 变更管理</h2><h2 id="Documentation-Handling-Measures-文档处理方法"><a href="#Documentation-Handling-Measures-文档处理方法" class="headerlink" title="Documentation Handling Measures 文档处理方法"></a>Documentation Handling Measures 文档处理方法</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;安全相关的概念介绍&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Security+" scheme="http://junlinhz.top/categories/Security/"/>
+    
+      <category term="安全基本概念" scheme="http://junlinhz.top/categories/Security/%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    
+    
+      <category term="Security+" scheme="http://junlinhz.top/tags/Security/"/>
+    
+      <category term="安全概念" scheme="http://junlinhz.top/tags/%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Security+-课程大纲</title>
+    <link href="http://junlinhz.top/2018/06/20/2018-06-20-security-%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2/"/>
+    <id>http://junlinhz.top/2018/06/20/2018-06-20-security-课程大纲/</id>
+    <published>2018-06-20T06:05:00.000Z</published>
+    <updated>2018-07-12T13:52:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍Security+的课程大纲</p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="大纲内容"><a href="#大纲内容" class="headerlink" title="大纲内容"></a>大纲内容</h1><h2 id="1-Network-Security-网络安全-20"><a href="#1-Network-Security-网络安全-20" class="headerlink" title="1. Network Security 网络安全 20%"></a>1. Network Security 网络安全 20%</h2><h2 id="2-Compliance-and-Operational-Security-合规与运维安全-18"><a href="#2-Compliance-and-Operational-Security-合规与运维安全-18" class="headerlink" title="2. Compliance and Operational Security 合规与运维安全 18%"></a>2. Compliance and Operational Security 合规与运维安全 18%</h2><h2 id="3-Threats-and-Vulnerabilities-威胁和漏洞-20"><a href="#3-Threats-and-Vulnerabilities-威胁和漏洞-20" class="headerlink" title="3. Threats and Vulnerabilities 威胁和漏洞 20%"></a>3. Threats and Vulnerabilities 威胁和漏洞 20%</h2><h2 id="4-Application-Data-and-Host-Security-应用、数据和主机安全-15"><a href="#4-Application-Data-and-Host-Security-应用、数据和主机安全-15" class="headerlink" title="4. Application, Data and Host Security 应用、数据和主机安全 15%"></a>4. Application, Data and Host Security 应用、数据和主机安全 15%</h2><h2 id="5-Access-Control-and-Identity-Management-访问控制与身份管理-15"><a href="#5-Access-Control-and-Identity-Management-访问控制与身份管理-15" class="headerlink" title="5. Access Control and Identity Management 访问控制与身份管理 15%"></a>5. Access Control and Identity Management 访问控制与身份管理 15%</h2><h2 id="6-Cryptography-密码学-12"><a href="#6-Cryptography-密码学-12" class="headerlink" title="6. Cryptography 密码学 12%"></a>6. Cryptography 密码学 12%</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍Security+的课程大纲&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Security+" scheme="http://junlinhz.top/categories/Security/"/>
+    
+      <category term="课程大纲" scheme="http://junlinhz.top/categories/Security/%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2/"/>
+    
+    
+      <category term="Security+" scheme="http://junlinhz.top/tags/Security/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Atom环境配置</title>
+    <link href="http://junlinhz.top/2018/06/19/2018-06-19-Atom%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://junlinhz.top/2018/06/19/2018-06-19-Atom环境配置/</id>
+    <published>2018-06-19T05:03:00.000Z</published>
+    <updated>2018-07-12T13:12:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍Atom的常用插件及使用情况</p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="功能插件"><a href="#功能插件" class="headerlink" title="功能插件"></a>功能插件</h1><h2 id="Sync-Settings"><a href="#Sync-Settings" class="headerlink" title="Sync Settings"></a><code>Sync Settings</code></h2><p>日常使用过程中会遇到多台电脑同时使用Atom的情况，该插件借助<code>Git</code>实现了插件的同步。</p>
+<ol>
+<li>安装<code>Sync Settings</code>插件，需要<code>Token</code>和<code>Gist</code>，根据目前的理解，需要Token来进行GitHub的认证，之后通过Gist来存储与Token对应的Atom配置。</li>
+<li>进入GitHub，Settings-Developer settings-Personal access tokens-Generate new token，填写名称，勾选Gist，创建以获取Token。这样获取该Token有权限访问Gist资源。Gist是GitHub提供用户存储代码片段或者文档的的仓库。</li>
+<li>创建Gist，按实际命名并添加说明，创建完成获取gist id。</li>
+<li>将Token和Gist id填入Sync Settings的设置中，获取该Token对应的Gist读写权限。</li>
+<li>执行<code>Ctrl+Shift+P</code>呼出命令行，输入<code>Sync Settings: Backup</code>完成本机配置同步。</li>
+<li>获取另一台PC时，下载该插件，将Token和gist填入设置中，执行Ctrl+Shift+P，输入<code>Sync Settings: Restore</code>完成配置同步。</li>
+</ol>
+<h2 id="platformio-atom-ide-terminal"><a href="#platformio-atom-ide-terminal" class="headerlink" title="platformio-atom-ide-terminal"></a><code>platformio-atom-ide-terminal</code></h2><p><a href="https://atom.io/packages/platformio-ide-terminal" target="_blank" rel="external">platformio-atom-ide-terminal</a>为Atom提供IDE终端，包含主题以及API，方便在编写时候操作终端。在设置里面可以改变终端主题，同时还提供了一系列方便终端输入命令和执行命令的技巧。<code>Alt+Shift+T</code>新建终端，<code>Alt+Shift+X</code>关闭终端。</p>
+<h2 id="color-picker"><a href="#color-picker" class="headerlink" title="color-picker"></a><code>color-picker</code></h2><p><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">color-picker</a>是颜色选择器，可以对数字表示的颜色进行实际查看并修改。</p>
+<h2 id="split-diff"><a href="#split-diff" class="headerlink" title="split-diff"></a><code>split-diff</code></h2><p><a href="https://atom.io/packages/split-diff" target="_blank" rel="external">split-diff</a>比较两个文本相似文本的差异。<code>Ctrl+Alt+T</code>来进行对比，如果没有两个文件，将会新建一个文件来进行比较，当然也可以通过命令行来执行。</p>
+<h2 id="autocomplete-en-cn"><a href="#autocomplete-en-cn" class="headerlink" title="autocomplete-en-cn"></a><code>autocomplete-en-cn</code></h2><p><a href="https://atom.io/packages/autocomplete-en-cn" target="_blank" rel="external">autocomplete-en-cn</a>用于英文的补全，可以设置在固定文件类型中出现。</p>
+<h2 id="autocomplete"><a href="#autocomplete" class="headerlink" title="autocomplete"></a><code>autocomplete</code></h2><p><a href="https://atom.io/packages/autocomplete" target="_blank" rel="external">autocomplete</a>用于自动补全，还未探索其功能。</p>
+<h1 id="Markdown插件"><a href="#Markdown插件" class="headerlink" title="Markdown插件"></a>Markdown插件</h1><p>Markdown的插件有很多，自带的可以使用<code>ctrl+shift+m</code>来实现实时预览。其实际使用主要是基础的语法，下面对插件逐个介绍。</p>
+<h2 id="Markdown-Writer"><a href="#Markdown-Writer" class="headerlink" title="Markdown-Writer"></a><code>Markdown-Writer</code></h2><p><a href="https://atom.io/packages/markdown-writer" target="_blank" rel="external">Markdown-Writer</a>为Markdown写作提供快捷键，同时会在菜单栏显示，可以帮助写作。默认的键盘设置是Mac系统下的，要想再Win下使用，需要在<code>ctrl+shift+p</code>下，执行<code>Markdown Writer: Create Default keymaps</code>来获取对应的键设置，但是由于win下存在快捷键冲突的问题，所以有些语法会没有快捷键，也可以自行设置，但是目前已经足够日常使用。这里还可以安装<a href="https://atom.io/packages/tool-bar-markdown-writer" target="_blank" rel="external">Toolbar for Markdown-Writer</a>，让Markdown语法实现可视化，类似云笔记按钮型写作，这里推荐快捷键来进行写作。</p>
+<h2 id="markdown-preview-enhanced"><a href="#markdown-preview-enhanced" class="headerlink" title="markdown-preview-enhanced"></a><code>markdown-preview-enhanced</code></h2><p><a href="https://atom.io/packages/markdown-preview-enhanced" target="_blank" rel="external">markdown-preview-enhanced</a>是系统自带预览的增强版本，可以对预览后的主题字体进行修改，快捷键仍然是<code>Ctrl+Shift+M</code>。</p>
+<ul>
+<li><a href="https://www.bookstack.cn/read/mpe/zh-cn-_sidebar.md" target="_blank" rel="external">使用文档</a></li>
+</ul>
+<p>由于markdown插件的快捷键之间存在冲突，所以将快捷键修改到合适的功能，首先通过命令行查找命令的名称，注意是鼠标放到命令上显示的小写名称，之后找到插件的自定义快捷键文件，设置某条件下可以执行的快捷键，这里设置插入图片的快捷键，如下所示<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'ctrl-shift-i'</span>: <span class="string">'markdown-preview-enhanced:image-helper'</span></div></pre></td></tr></table></figure></p>
+<p>这里设置markdown-preview-enhanced，将图片拖拽到编辑器时上传到七牛云，这里要设置七牛的AK、SK、存储空间名称以及域名，这样就可以完成拖拽上传。</p>
+<h1 id="美化插件"><a href="#美化插件" class="headerlink" title="美化插件"></a>美化插件</h1><p>对Atom进行美化可以提高写作效率，增加舒适感。</p>
+<h2 id="Atom-Beautify"><a href="#Atom-Beautify" class="headerlink" title="Atom-Beautify"></a><code>Atom-Beautify</code></h2><p><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">Atom-Beautify</a>可以对多种语言代码进行美化。对于不同的语言需要进行不同的设置和进一步安装，这里先不做尝试。美化时候打开命令面板，然后输入<code>Atom Beautify: Beautify Language ???</code>，问号为语言格式。如果文件已经有了扩展名，可以使用<code>Ctrl+Alt+B</code>进行美化。</p>
+<h2 id="file-icons"><a href="#file-icons" class="headerlink" title="file-icons"></a><code>file-icons</code></h2><p><a href="https://atom.io/packages/file-icons" target="_blank" rel="external">file-icons</a>可以给文件前面加对应的图标，方便浏览，安装即可，无需配置。当然也可以自定义一些图标，想来没什么意义。</p>
+<h2 id="highlight-selected"><a href="#highlight-selected" class="headerlink" title="highlight-selected"></a><code>highlight-selected</code></h2><p><a href="https://atom.io/packages/highlight-selected" target="_blank" rel="external">highlight-selected</a>是对选中的内容以及在文中的相同内容高亮。当然也可以通过设置来确定选定框的样式，这里使用默认。</p>
+<h2 id="language-docker"><a href="#language-docker" class="headerlink" title="language-docker"></a><code>language-docker</code></h2><p><a href="https://atom.io/packages/language-docker" target="_blank" rel="external">language-docker</a>支持Docker语法高亮，以后估计会用到。</p>
+<h2 id="linter"><a href="#linter" class="headerlink" title="linter"></a><code>linter</code></h2><p><a href="https://atom.io/packages/linter" target="_blank" rel="external">linter</a>是一个语法检查插件，它只是一个框架，针对不同语言需要安装不同的具体插件。<a href="http://atomlinter.github.io/" target="_blank" rel="external">AtomLinter</a>是各个语言具体语法检测插件的合集网址，可以根据后续实际使用来进行选择。</p>
+<ul>
+<li>linter-shellcheck针对shell做语法检查</li>
+<li>linter-docker针对docker做语法检测</li>
+<li>linter-docker针对markdown做语法检测</li>
+</ul>
+<h2 id="qolor"><a href="#qolor" class="headerlink" title="qolor"></a><code>qolor</code></h2><p><a href="https://atom.io/packages/qolor" target="_blank" rel="external">qolor</a>可以让SQL语句语法高亮，方便语义理解。</p>
+<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><ul>
+<li>atom-material-ui 主题</li>
+<li>atom-material-syntax 语法高亮</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍Atom的常用插件及使用情况&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Atom" scheme="http://junlinhz.top/categories/Atom/"/>
+    
+    
+      <category term="Atom" scheme="http://junlinhz.top/tags/Atom/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无线攻击-无线安全测试</title>
+    <link href="http://junlinhz.top/2018/06/07/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB-%E6%97%A0%E7%BA%BF%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95/"/>
+    <id>http://junlinhz.top/2018/06/07/无线攻击-无线安全测试/</id>
+    <published>2018-06-07T14:08:39.000Z</published>
+    <updated>2018-06-09T11:53:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍无线安全测试的理论。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="IEEE"><a href="#IEEE" class="headerlink" title="IEEE"></a>IEEE</h2><p>制定了无线的标准，802负责局域网和城域网。</p>
+<ul>
+<li>以太网</li>
+<li>令牌环网</li>
+<li>无线局域网</li>
+<li>网桥</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍无线安全测试的理论。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="无线攻击" scheme="http://junlinhz.top/categories/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB/"/>
+    
+      <category term="理论研究" scheme="http://junlinhz.top/categories/%E6%97%A0%E7%BA%BF%E6%94%BB%E5%87%BB/%E7%90%86%E8%AE%BA%E7%A0%94%E7%A9%B6/"/>
+    
+    
+      <category term="无线技术" scheme="http://junlinhz.top/tags/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kali Linux-安装</title>
+    <link href="http://junlinhz.top/2018/06/07/Kali-Linux-%E5%AE%89%E8%A3%85/"/>
+    <id>http://junlinhz.top/2018/06/07/Kali-Linux-安装/</id>
+    <published>2018-06-07T10:45:23.000Z</published>
+    <updated>2018-06-07T14:03:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍Kali Linux的虚拟机安装过程。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="基础安装"><a href="#基础安装" class="headerlink" title="基础安装"></a>基础安装</h1><h2 id="VirtualBox安装"><a href="#VirtualBox安装" class="headerlink" title="VirtualBox安装"></a>VirtualBox安装</h2><p>官网下载VirtualBox，并下载其扩展安装包，完成虚拟机环境安装。</p>
+<p>新建Linux系统，并在<code>设置-系统-处理器-启用PAE/NX打钩</code>，<code>设置-系统-主板-启用I/O APIC</code></p>
+<p>同时要在BIOS中开启虚拟化技术，Virtualization Technology-Enabled</p>
+<h2 id="Kali-Linux安装"><a href="#Kali-Linux安装" class="headerlink" title="Kali Linux安装"></a>Kali Linux安装</h2><p>使用图形界面对Kali进行安装，安装选项同其他Linux安装相似。</p>
+<h1 id="Kali环境配置"><a href="#Kali环境配置" class="headerlink" title="Kali环境配置"></a>Kali环境配置</h1><h2 id="更新源文件地址"><a href="#更新源文件地址" class="headerlink" title="更新源文件地址"></a>更新源文件地址</h2><ul>
+<li><p>进入<a href="docs.kali.org">Kali Docs</a>，选择USing Kali Linux-Kali sources.list Repositories，可以查看到官方库，可以复制官方源</p>
+</li>
+<li><p>执行<code>gedit /etc/apt/sources.list</code>，将官方源复制到该list种，一般已经存在。</p>
+</li>
+</ul>
+<h2 id="Kali-Linux跨版本升级（一般不执行）"><a href="#Kali-Linux跨版本升级（一般不执行）" class="headerlink" title="Kali Linux跨版本升级（一般不执行）"></a>Kali Linux跨版本升级（一般不执行）</h2><p><code>apt-get update &amp;&amp; apt full-upgrade</code> 完成最新更新</p>
+<h2 id="Kali-Linux更新"><a href="#Kali-Linux更新" class="headerlink" title="Kali Linux更新"></a>Kali Linux更新</h2><h3 id="方法一（保留原版本，尝试没有成功）"><a href="#方法一（保留原版本，尝试没有成功）" class="headerlink" title="方法一（保留原版本，尝试没有成功）"></a>方法一（保留原版本，尝试没有成功）</h3><ul>
+<li>apt-get update</li>
+<li>安装增强工具，按其提示的所缺linux-headers-amd64和linux-headers-4.15.0-kali2-amd64</li>
+</ul>
+<h3 id="方法二（升级到下一个版本了）"><a href="#方法二（升级到下一个版本了）" class="headerlink" title="方法二（升级到下一个版本了）"></a>方法二（升级到下一个版本了）</h3><ul>
+<li>首先更新最新软件包索引文件，<code>apt-get update</code>(更新源设置好，紧接着执行这个). <code>apt-get upgrade</code>是更新索引里的所有软件，<code>apt-get dist-upgrade</code>会解决依赖性。</li>
+<li><code>apt install linux-headers-*</code>确定要安装的image版本，安装最新版</li>
+<li>之后安装image文件，<code>apt-get install linux-image-$(uname -r)</code></li>
+<li>安装Linux头文件（增强工具需要），即<code>apt-get install linux-headers-$(uname -r)</code>本系统的内核架构</li>
+</ul>
+<h2 id="VirtualBox增强工具安装"><a href="#VirtualBox增强工具安装" class="headerlink" title="VirtualBox增强工具安装"></a>VirtualBox增强工具安装</h2><ul>
+<li>设备安装增强工具</li>
+<li>双击将VBoxLinuxAddition.run拖出，之后<code>chmod +x VBoxLinuxAddition.run</code>赋予权限</li>
+<li><code>./VBoxLinuxAddition.run</code>执行即可完成安装</li>
+</ul>
+<h2 id="网络监控插件安装"><a href="#网络监控插件安装" class="headerlink" title="网络监控插件安装"></a>网络监控插件安装</h2><p>打开<code>Software</code>，搜索NetSpeed，安装即可。</p>
+<h2 id="输入法安装"><a href="#输入法安装" class="headerlink" title="输入法安装"></a>输入法安装</h2><ul>
+<li>apt-get install gdebi</li>
+<li>安装搜狗输入法</li>
+<li>在fictx中添加搜狗键盘</li>
+</ul>
+<h2 id="flash安装"><a href="#flash安装" class="headerlink" title="flash安装"></a>flash安装</h2><ul>
+<li>下载tar.gz安装包</li>
+<li>将解压后的so文件移到/usr/lib/mozilla/plugins</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍Kali Linux的虚拟机安装过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Kali Linux" scheme="http://junlinhz.top/categories/Kali-Linux/"/>
+    
+      <category term="环境搭建" scheme="http://junlinhz.top/categories/Kali-Linux/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="Kali Linux" scheme="http://junlinhz.top/tags/Kali-Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>云-VPS搭建SS</title>
+    <link href="http://junlinhz.top/2018/04/01/%E4%BA%91-VPS%E6%90%AD%E5%BB%BASS/"/>
+    <id>http://junlinhz.top/2018/04/01/云-VPS搭建SS/</id>
+    <published>2018-04-01T15:25:00.000Z</published>
+    <updated>2018-09-22T07:08:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p><code>Vultr</code>终于趁着活动买了个VPS，所以搭建ss试试。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Vultr"><a href="#Vultr" class="headerlink" title="Vultr"></a>Vultr</h1><h2 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h2><p>运气不错，一直想着弄个VPS，今天在注册后，发现充值10送25也算挺好的。而且当时准备使用<code>Paypal</code>也因为麻烦没去做，正好因为这个事情又去做了一下，发现还是比较好弄的，原来学校发的交行卡这么舒服，借记卡直接就绑定了，瞬间没钱，不过1比6的比率还是不错的啦。</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p><code>VPS</code>只有纽约和迈阿密是2.5美元，所以也没什么好选择，想着先试试怎么搭建再去换好了，反正是练手，而且科学上网确实也是基础，还是要搞一搞的，忽然想到书签还没整理，都是头疼的事情。VPS的选择很常规，就按着选项来好了，不过其中的一些配置都没有去选，一方面是因为不知道，一方面估计应该后面会用到的时候再去配置好了，系统选择了CentOS，本来在Ubuntu之间纠结，想着反正都要去折腾就挨着弄好了。VPS直接购买后，就会在部署，之后就是选择一个远程连接工具去连接他咯。</p>
+<h2 id="iTerm-2"><a href="#iTerm-2" class="headerlink" title="iTerm 2"></a>iTerm 2</h2><p><code>iTerm 2</code>是macOS上的一个终端软件，相对于原生终端，有自己更加方便的功能，这里由于本人也是第一次使用，所以该终端的使用以后再谈。下载地址<a href="http://www.iterm2.com/" target="_blank" rel="external">iTerm2</a></p>
+<p>使用如下命令链接<code>VPS</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@[VPSip地址]</div></pre></td></tr></table></figure>
+<p>之后输入密码即可连接~~</p>
+<h1 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>ss的搭建需要很多步骤，首先要安装<code>git</code>，之后从github安装ss，之后为了可以使用AEAD，需要安装libsodium，过程如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># git</span></div><div class="line">yum install git</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ss</span></div><div class="line">yum install python-setuptools &amp;&amp; easy_install pip</div><div class="line">pip install git+https://github.com/shadowsocks/shadowsocks.git@master</div><div class="line"><span class="comment"># dnf安装</span></div><div class="line">wget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64/dnf-conf-0.6.4-2.sdl7.noarch.rpm</div><div class="line">wget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64//dnf-0.6.4-2.sdl7.noarch.rpm</div><div class="line">wget http://springdale.math.ias.edu/data/puias/unsupported/7/x86_64/python-dnf-0.6.4-2.sdl7.noarch.rpm</div><div class="line">yum install python-dnf-0.6.4-2.sdl7.noarch.rpm  dnf-0.6.4-2.sdl7.noarch.rpm dnf-conf-0.6.4-2.sdl7.noarch.rpm</div><div class="line"></div><div class="line"><span class="comment"># libsodium安装</span></div><div class="line">dnf install libsodium python34-pip</div><div class="line">pip3 install  git+https://github.com/shadowsocks/shadowsocks.git@master</div></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>创建<code>/etc/shadowsocks.json</code>文件。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 创建</div><div class="line">vim  /etc/shadowsocks.json</div><div class="line"># 内容</div><div class="line">&#123;</div><div class="line">    <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">    <span class="attr">"server_port"</span>:<span class="number">443</span>,</div><div class="line">    <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</div><div class="line">    <span class="attr">"password"</span>:<span class="string">"xxxxxxxxxxx"</span>,</div><div class="line">    <span class="attr">"timeout"</span>:<span class="number">300</span>,</div><div class="line">    <span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="attr">"fast_open"</span>:<span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 安装防火墙</div><div class="line">yum install firewalld</div><div class="line"># 启动防火墙</div><div class="line">systemctl <span class="built_in">start</span> firewalld</div><div class="line"></div><div class="line"># 端口号是你自己设置的端口</div><div class="line">firewall-<span class="built_in">cmd</span> --permanent --zone=public --add-port=<span class="number">443</span>/tcp</div><div class="line">firewall-<span class="built_in">cmd</span> --reload</div></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>要在后台运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 此代码是后台运行的代码，不能查看现阶段情况</span></div><div class="line">ssserver -c /etc/shadowsocks.json -d start</div><div class="line"><span class="comment"># 此代码是直接执行的，实时的可以看到所有的连接情况</span></div><div class="line">ssserver -c /etc/shadowsocks.json</div></pre></td></tr></table></figure>
+<h2 id="加速"><a href="#加速" class="headerlink" title="加速"></a>加速</h2><p>centos7使用如下方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -O rskernel.sh https://raw.githubusercontent.com/uxh/rskernel/master/rskernel.sh &amp;&amp; bash rskernel.sh</div><div class="line"></div><div class="line">yum install net-tools -y &amp;&amp; wget --no-check-certificate -O appex.sh https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh &amp;&amp; chmod +x appex.sh &amp;&amp; bash appex.sh install</div><div class="line"></div><div class="line"><span class="comment"># nyy</span></div></pre></td></tr></table></figure>
+<h2 id="手机客户端"><a href="#手机客户端" class="headerlink" title="手机客户端"></a>手机客户端</h2><p>ios使用pp助手下载shadowRocket，然后用pp助手修复闪退，也可以使用FirstWingy。传输的时候有个混淆，测试下发现不能用。</p>
+<h2 id="mac客户端"><a href="#mac客户端" class="headerlink" title="mac客户端"></a>mac客户端</h2><p>下载<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="external">ss-ngmac客户端</a>，之后解压使用即可，然后设置自己的服务器地址和密码即可。</p>
+<h2 id="windows客户端"><a href="#windows客户端" class="headerlink" title="windows客户端"></a>windows客户端</h2><p>下载<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="external">ss-windows</a>,之后解压直接使用，这里配置好服务器和端口后，有一个连接端口1080，这里可以使用xx-tunnels的配置文件来进行访问控制。</p>
+<h2 id="Android客户端"><a href="#Android客户端" class="headerlink" title="Android客户端"></a>Android客户端</h2><p>下载<a href="https://github.com/shadowsocks/shadowsocks-android" target="_blank" rel="external">ss-android</a>,之后手机安装apk，输入服务器和端口使用即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Vultr&lt;/code&gt;终于趁着活动买了个VPS，所以搭建ss试试。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="服务器" scheme="http://junlinhz.top/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Vultr" scheme="http://junlinhz.top/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/Vultr/"/>
+    
+    
+      <category term="VPS" scheme="http://junlinhz.top/tags/VPS/"/>
+    
+      <category term="ss" scheme="http://junlinhz.top/tags/ss/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>时光</title>
+    <link href="http://junlinhz.top/2018/04/01/%E6%97%B6%E5%85%89/"/>
+    <id>http://junlinhz.top/2018/04/01/时光/</id>
+    <published>2018-04-01T10:40:27.000Z</published>
+    <updated>2018-04-01T15:30:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>时光轻轻，忘去，应以好事为之，方得本心。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="关于隔绝"><a href="#关于隔绝" class="headerlink" title="关于隔绝"></a>关于隔绝</h2><p>私以为人有时候真的该静静的去停下来，看看风景，想想事情，就会有一些新的感悟。从上一次微博搭好到现在，已经过去好远好远，担心工作，到担心写不出论文，到担心公司是否适应，担心公司前景，担心自己未来，担心房子，担心身体，担心小论文发表，担心父母，担心毕业论文是否可以，担心答辩，担心第二篇是否同意，一直在担心，直到现在都在担心搬宿舍，担心会不会延期，静静的想想每个阶段真的都是在拼命的去想，耗尽力气，值得开心的是，真的忽然很享受现在的生活了，不在去想赶快进入下一个阶段就好了，虽然每次都知道未来也很难，还是迫不及待的进入下个阶段，认为现阶段的生活都是糟糕透顶了。<br>现在的心情是，终于可以随便去写一些话，不需要考虑是否通顺，不需要考虑是否有语病，想在哪里停顿都可以，这种舒服的感觉可以说是过渡阶段的一种提前放松吧，就像高考后的暑假，本科毕业后的旅行。所以还有时间可以放空，可以静静的休息也不错。</p>
+<h2 id="关于成长"><a href="#关于成长" class="headerlink" title="关于成长"></a>关于成长</h2><p>其实，每一次做完的事情，隔着好久返回来看，都会觉得当初的自己真的好厉害，这样说来好像，自己在退步吧，可是忽然发现成长真的很难界定，忽然想明白一些东西，忽然把自己很固定的思想在改变，或者忽然不那么倔强不那么追求完美，总之，成长好像并不需要去用厉不厉害去界定，好像之乎于完美，心灵的坦途更该是一种财富。忽然想起了IG.KID退役的时候，说每个人都是不同的，有些人努力了成为王者，而有些人真的只是用来衬托王者的，费劲千辛万苦，还是达不到，类似马龙，类似羽毛球的那个大哥。所以在明知道生活给与你的微小概率，还愿意去热血努力的，才是真的勇敢吧。当然，也许正如成长不是靠厉害来判断，也许一个人对成功也没必要非要数一数二吧，能够突破自己，能够自得其乐，能够有知己相伴，就好，很幸运能遇到这些日子，自己也慢慢的挺过来了，毕业论文的致谢迟迟没有下笔。其实我是一个仪式感很重的人吧， 什么都会弄的很神圣，但又不可得，总会是要坚持什么，不是么？</p>
+<h2 id="关于知识"><a href="#关于知识" class="headerlink" title="关于知识"></a>关于知识</h2><p>大丈夫折扇谈笑，上至洪荒，下至百流，很是羡慕。每每的想起自己，总是会空虚的感觉毫无学识，后来才慢慢的有所得，也才慢慢的有所自信，深以为技能对个人武装的力量之大。当然还有那堪堪及格的身体素质，所以在看到别人叱咤风云时，还是希望也会有自己的一份天地。所以好好的学一些东西，真的很好。前天开始，买了cos的知乎，发现原来是文字直播，把cloud关掉了，把一些密码分类，把邮箱处理掉，把云服务器买一下，下一步就是VPS搭建ss，搭建微博，然后今天又遇到了gitbook，挺好的正好可以用来整理书签。还有协议grs时期的文件也可以整理了，到时候把论文程序github下，又要学下git了，感觉自己真的是神经大条=  =，每次都会把一些东西忘掉，也是很不讲道理。索性每次回忆也还算不错，想着真的要markdown所有东西了，忽然又发现markdown的快捷键，pycharm的快捷键，sublimeText的快捷键都忘掉了，很尴尬，还是要记录呀！有很多事情可以去完成，感觉也还是不错的，顺便记录下发博客的过程总是不错的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">'name'</span></div><div class="line">hexo d -g</div><div class="line">hexo s</div><div class="line"><span class="comment"># password number</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;时光轻轻，忘去，应以好事为之，方得本心。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Idea" scheme="http://junlinhz.top/categories/Idea/"/>
+    
+      <category term="Life" scheme="http://junlinhz.top/categories/Idea/Life/"/>
+    
+    
+      <category term="Free" scheme="http://junlinhz.top/tags/Free/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机视觉01-图像处理基础</title>
+    <link href="http://junlinhz.top/2017/09/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%8901-%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/"/>
+    <id>http://junlinhz.top/2017/09/25/计算机视觉01-图像处理基础/</id>
+    <published>2017-09-25T15:50:10.000Z</published>
+    <updated>2018-04-01T13:54:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本来想着毕业论文要用机器学习去做一些东西的，最后还是用了传统的方法，这个坑既然开始，就在结束时候填上好了。<br>未完待续。。。</p>
+<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本来想着毕业论文要用机器学习去做一些东西的，最后还是用了传统的方法，这个坑既然开始，就在结束时候填上好了。&lt;br&gt;未完待续。。。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机视觉" scheme="http://junlinhz.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+      <category term="计算机视觉" scheme="http://junlinhz.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+      <category term="图像处理基础" scheme="http://junlinhz.top/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python图像处理-第三方库安装</title>
+    <link href="http://junlinhz.top/2017/09/08/Python%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%AE%89%E8%A3%85/"/>
+    <id>http://junlinhz.top/2017/09/08/Python图像处理-第三方库安装/</id>
+    <published>2017-09-08T08:40:51.000Z</published>
+    <updated>2017-09-11T12:43:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本部分介绍用 Python 进行图像处理的前期准备工作，即第三方库的安装</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Python-版本说明"><a href="#Python-版本说明" class="headerlink" title="Python 版本说明"></a>Python 版本说明</h1><h2 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h2><p>本人使用的是 <code>mac</code> 系统，所以同时存在两个版本 <code>2.7</code> 和 <code>3.5</code>。其中 <code>2.7</code> 版本为系统自带版本， <code>3.5</code> 为自己安装的版本。</p>
+<h2 id="版本路径"><a href="#版本路径" class="headerlink" title="版本路径"></a>版本路径</h2><p><code>2.7</code> 的路径是在 <code>/Library/Python/2.7</code></p>
+<p><code>3.5</code> 的路径是在 <code>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5</code></p>
+<p>可以通过 <code>which python</code> 进行查询，结果如图所示</p>
+<p> <img src="http://ove3p34k7.bkt.clouddn.com/whichpython.png" alt="which python"></p>
+<p>所以在安装第三库的时候，可以进行自动安装和手动安装，但是需要注意安装的位置。</p>
+<h2 id="版本使用"><a href="#版本使用" class="headerlink" title="版本使用"></a>版本使用</h2><p>在是用 <code>Python</code> 的时候，要注意版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># python 2.7</span></div><div class="line">$ python xx.py</div><div class="line"></div><div class="line"><span class="comment"># python 3.5</span></div><div class="line">$ python3 xx.py</div></pre></td></tr></table></figure>
+<h1 id="Pip-的安装"><a href="#Pip-的安装" class="headerlink" title="Pip 的安装"></a>Pip 的安装</h1><h2 id="Pip-介绍"><a href="#Pip-介绍" class="headerlink" title="Pip 介绍"></a>Pip 介绍</h2><p>pip 是一个 <code>Python</code> 包管理工具，主要是用于安装 <code>PyPI</code> 上的软件包，可以替代 <code>easy_install</code> 工具。</p>
+<ul>
+<li><p>官方下载 <kbd><a href="https://pypi.python.org/pypi/pip/" target="_blank" rel="external">[Pip | Github]</a></kbd></p>
+</li>
+<li><p>开发文档 <kbd> <a href="https://pypi.python.org/pypi/pip/" target="_blank" rel="external">[Pip | 开发文档]</a></kbd></p>
+</li>
+<li><p>参考博客 <kbd><a href="http://blog.csdn.net/olanlanxiari/article/details/48086917" target="_blank" rel="external">[Pip | 参考]</a></kbd></p>
+</li>
+<li><p>知乎参考 <kbd><a href="https://www.zhihu.com/question/21653286" target="_blank" rel="external">[Pip | 知乎参考]</a></kbd></p>
+<h2 id="Pip-版本"><a href="#Pip-版本" class="headerlink" title="Pip 版本"></a>Pip 版本</h2><p>由于使用的 <code>Python</code> 不同，所以每个版本下对应的 <code>Pip</code> 也要分别安装。</p>
+</li>
+</ul>
+<p><code>python2.7</code> 对应 <code>pip2</code>，<code>python3.5</code> 对应 <code>pip3</code>，当然系统默认对于 <code>pip</code> 有一个对应的版本，可以是 <code>pip2</code> 也可以是是 <code>pip3</code>。就和 <code>python</code> 对应于 <code>python2.7</code> 还是 <code>python3.5</code> 一样。</p>
+<p>可以用如下方式查看 <code>python</code> 和 <code>pip</code> 对应哪个版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python --version</div><div class="line">$ pip --version</div></pre></td></tr></table></figure>
+<p>对于其默认对应的版本可以进行修改，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 修改为 which pip3 或 pip2 的路径</span></div><div class="line">$ <span class="built_in">alias</span> pip=/Library/Frameworks/Python.framework/Versions/3.5/bin/pip3</div><div class="line"><span class="comment"># 解除修改</span></div><div class="line">$ <span class="built_in">unalias</span> pip</div></pre></td></tr></table></figure>
+<p>为了区分，我们还是按照系统原有的设置， <code>python</code> 对应 <code>python2.7</code>， <code>pip</code> 对应 <code>pip2</code>。如果想用高版本的时候我们直接使用 <code>python3</code> 和 <code>pip3</code> 来进行操作。</p>
+<h2 id="Pip-安装"><a href="#Pip-安装" class="headerlink" title="Pip 安装"></a>Pip 安装</h2><h3 id="get-pip-py-安装"><a href="#get-pip-py-安装" class="headerlink" title="get-pip.py 安装"></a>get-pip.py 安装</h3><p>下载 <a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="external">[get-pip.py]</a></p>
+<p>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python get-pip.py</div><div class="line">$ python3 get-pip.py</div></pre></td></tr></table></figure>
+<h3 id="easy-install-安装"><a href="#easy-install-安装" class="headerlink" title="easy_install 安装"></a>easy_install 安装</h3><p>直接在终端输入如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo easy_install pip</div></pre></td></tr></table></figure>
+<h2 id="Pip-使用"><a href="#Pip-使用" class="headerlink" title="Pip 使用"></a>Pip 使用</h2><h3 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装软件</span></div><div class="line">$ pip install xxx</div><div class="line"><span class="comment"># 升级某软件</span></div><div class="line">$ pip install -U xxx</div></pre></td></tr></table></figure>
+<h3 id="查看具体安装文件"><a href="#查看具体安装文件" class="headerlink" title="查看具体安装文件"></a>查看具体安装文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip show --files SomePackage</div></pre></td></tr></table></figure>
+<h3 id="查看哪些软件需要更新"><a href="#查看哪些软件需要更新" class="headerlink" title="查看哪些软件需要更新"></a>查看哪些软件需要更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip list --outdated</div></pre></td></tr></table></figure>
+<h3 id="Requirements文件安装依赖软件"><a href="#Requirements文件安装依赖软件" class="headerlink" title="Requirements文件安装依赖软件"></a>Requirements文件安装依赖软件</h3><p>Requirements文件 一般记录的是依赖软件列表，通过pip可以一次性安装依赖软件包:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ pip xxx &gt; requirements.txt</div><div class="line"></div><div class="line">$ pip install -r requirements.txt</div></pre></td></tr></table></figure>
+<h3 id="搜寻"><a href="#搜寻" class="headerlink" title="搜寻"></a>搜寻</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip search pycuda</div></pre></td></tr></table></figure>
+<h2 id="Pip-升级"><a href="#Pip-升级" class="headerlink" title="Pip 升级"></a>Pip 升级</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install -U pip</div></pre></td></tr></table></figure>
+<h1 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h1><ul>
+<li><p>官方下载 <kbd><a href="http://www.pythonware.com/products/pil/" target="_blank" rel="external">[PIL | 官方下载]</a><br></kbd></p>
+</li>
+<li><p>官方文档 <kbd><a href="http://effbot.org/imagingbook/" target="_blank" rel="external">[PIL | 官方文档]</a></kbd></p>
+</li>
+<li><p>官方下载 <kbd><a href="https://github.com/python-pillow/Pillow" target="_blank" rel="external">[Pillow | Github]</a></kbd></p>
+</li>
+<li>官方文档 <kbd><a href="https://pillow.readthedocs.io/en/4.2.x/#" target="_blank" rel="external">[Pillow | 官方文档]</a></kbd></li>
+</ul>
+<h2 id="PIL-介绍"><a href="#PIL-介绍" class="headerlink" title="PIL 介绍"></a>PIL 介绍</h2><p><code>PIL</code> : <code>Python Imageing Library</code>，是 <code>Python</code> 平台上的图像处理标准库，但是仅支持 <kbd>Python<kbd>2.7</kbd></kbd> ，志愿者在 <code>PIL</code> 基础上进行修改，形成了新的库 <code>Pillow</code>。</p>
+<h2 id="Pillow-安装"><a href="#Pillow-安装" class="headerlink" title="Pillow 安装"></a>Pillow 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 未安装</span></div><div class="line">$ pip install Pillow</div><div class="line"><span class="comment"># 升级</span></div><div class="line">$ pip install -U Pillow</div></pre></td></tr></table></figure>
+<h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><ul>
+<li><p>官方网站 <kbd><a href="http://matplotlib.org/" target="_blank" rel="external">[Matplotlib | 官方网站]</a></kbd></p>
+</li>
+<li><p>官方文档 <kbd><a href="http://matplotlib.org/2.0.2/contents.html" target="_blank" rel="external">[Matplotlib | 官方文档]</a></kbd></p>
+</li>
+</ul>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>处理数学运算，绘制表格，或者在图像上绘点、直线和曲线等，是一个可以跨平台生成各种硬拷贝格式和交互式环境的出版品质量图。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># For Python 2.7</span></div><div class="line">$ pip2 install matplotlib</div><div class="line"><span class="comment"># For Python 3.4</span></div><div class="line">$ pip3 install matplotlib</div></pre></td></tr></table></figure>
+<h1 id="NumPy"><a href="#NumPy" class="headerlink" title="NumPy"></a>NumPy</h1><ul>
+<li>官方网站 <kbd><a href="http://www.numpy.org/" target="_blank" rel="external">[NumPy | 官方网站]</a></kbd></li>
+<li>官方文档 <kbd><a href="https://docs.scipy.org/doc/numpy-dev/index.html" target="_blank" rel="external">[NumPy | 官方文档]</a></kbd></li>
+</ul>
+<h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p><code>NumPy</code> 是非常有名的 <code>Python</code> 科学计算工具包，其中包含了大量有用的思想，比如数组对象和线性代数函数，可以实现数组中的重要操作，以及图像变换，对变换进行建模、图像分类，图像聚类等。</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># For Python 2.7</span></div><div class="line">$ pip2 install numpy</div><div class="line"><span class="comment"># For Python 3.4</span></div><div class="line">$ pip3 install numpy</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本部分介绍用 Python 进行图像处理的前期准备工作，即第三方库的安装&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="图像处理" scheme="http://junlinhz.top/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="Python工具安装" scheme="http://junlinhz.top/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/Python%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/"/>
+    
+    
+      <category term="Pillow" scheme="http://junlinhz.top/tags/Pillow/"/>
+    
+      <category term="Pil" scheme="http://junlinhz.top/tags/Pil/"/>
+    
+      <category term="Pip" scheme="http://junlinhz.top/tags/Pip/"/>
+    
+      <category term="Matplotlib" scheme="http://junlinhz.top/tags/Matplotlib/"/>
+    
+      <category term="NumPy" scheme="http://junlinhz.top/tags/NumPy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Next主题高级优化</title>
+    <link href="http://junlinhz.top/2017/08/28/Hexo-Next%E4%B8%BB%E9%A2%98%E9%AB%98%E7%BA%A7%E4%BC%98%E5%8C%96/"/>
+    <id>http://junlinhz.top/2017/08/28/Hexo-Next主题高级优化/</id>
+    <published>2017-08-28T07:31:19.000Z</published>
+    <updated>2017-08-29T06:42:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍 <code>hexo</code> 的 <code>NexT</code> 更进一步的优话配置</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="添加「Fork-me-on-github」"><a href="#添加「Fork-me-on-github」" class="headerlink" title="添加「Fork me on github」"></a>添加「Fork me on github」</h1><p>在 <a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">[代码样式]</a> 选择样式代码，然后粘贴刚才复制的代码到 <code>themes/next/layout/_layout.swig</code> 文件中，放置在在 <code>&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;</code> 的下面，并把 <code>href</code> 改为你的 <code>github</code> 地址。</p>
+<h1 id="修改-代码块自定义样式"><a href="#修改-代码块自定义样式" class="headerlink" title="修改``代码块自定义样式"></a>修改``代码块自定义样式</h1><p>打开 <code>\themes\next\source\css\_custom\custom.styl</code> ,向里面加入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Custom styles.</span></div><div class="line">code &#123;</div><div class="line">    color: #ff7600;</div><div class="line">    background: #fbf7f8;</div><div class="line">    margin: <span class="number">2</span>px;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 大代码块的自定义样式</span></div><div class="line">.highlight, pre &#123;</div><div class="line">    margin: <span class="number">5</span>px <span class="number">0</span>;</div><div class="line">    padding: <span class="number">5</span>px;</div><div class="line">    border-radius: <span class="number">3</span>px;</div><div class="line">&#125;</div><div class="line">.highlight, code, pre &#123;</div><div class="line">    border: 1px solid #d6d6d6;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="修改文章内链接文本样式"><a href="#修改文章内链接文本样式" class="headerlink" title="修改文章内链接文本样式"></a>修改文章内链接文本样式</h1><p>修改文件 <code>themes\next\source\css\_common\components\post\post.styl</code> ，在末尾添加如下 <code>css</code> 样式，：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 文章内链接文本样式</div><div class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">p</span> <span class="selector-tag">a</span>&#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#0593d3</span>;</div><div class="line">  <span class="attribute">border-bottom</span>: none;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#0593d3</span>;</div><div class="line">  &amp;:hover &#123;</div><div class="line">    <span class="selector-tag">color</span>: <span class="selector-id">#fc6423</span>;</div><div class="line">    <span class="selector-tag">border-bottom</span>: <span class="selector-tag">none</span>;</div><div class="line">    <span class="selector-tag">border-bottom</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#fc6423</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="修改文章底部的那个带-号的标签"><a href="#修改文章底部的那个带-号的标签" class="headerlink" title="修改文章底部的那个带#号的标签"></a>修改文章底部的那个带#号的标签</h1><p>修改模板 <code>/themes/next/layout/_macro/post.swig</code> ，搜索 <code>rel=&quot;tag&quot;&gt;#</code> ，将 <code>#</code> 换成 <code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p>
+<h1 id="在每篇文章末尾统一添加“本文结束”标记"><a href="#在每篇文章末尾统一添加“本文结束”标记" class="headerlink" title="在每篇文章末尾统一添加“本文结束”标记"></a>在每篇文章末尾统一添加“本文结束”标记</h1><p>在路径 <code>\themes\next\layout\_macro</code> 中新建 <code>passage-end-tag.swig</code> 文件,并添加以下内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &#123;% <span class="keyword">if</span> not is_index %&#125;</div><div class="line">        &lt;div style=<span class="string">"text-align:center;color: #ccc;font-size:14px;"</span>&gt;-------------本文结束&lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"fa fa-paw"</span>&gt;&lt;/i&gt;感谢您的阅读-------------&lt;/div&gt;</div><div class="line">    &#123;% endif %&#125;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>接着打开 <code>\themes\next\layout\_macro\post.swig</code> 文件，在 <code>post-body</code> 之后， <code>post-footer</code> 之前添加代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">  &#123;% <span class="keyword">if</span> not is_index %&#125;</div><div class="line">    &#123;% include <span class="string">'passage-end-tag.swig'</span> %&#125;</div><div class="line">  &#123;% endif %&#125;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>然后打开主题配置文件 <code>_config.yml</code>，在末尾添加</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 文章末尾添加“本文结束”标记</span></div><div class="line"><span class="attr">passage_end_tag:</span></div><div class="line"><span class="attr">  enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h1 id="在网站底部加上访问量"><a href="#在网站底部加上访问量" class="headerlink" title="在网站底部加上访问量"></a>在网站底部加上访问量</h1><p>打开 <code>\themes\next\layout\_partials\footer.swig</code> 文件,在 <code>copyright</code> 前添加：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>合适位置加入如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"powered-by"</span>&gt;</div><div class="line">&lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"fa fa-user-md"</span>&gt;&lt;/i&gt;&lt;span id="busuanzi_container_site_uv"&gt;</div><div class="line">  本站访客数:&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;</div><div class="line">&lt;/span&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="网站底部字数统计"><a href="#网站底部字数统计" class="headerlink" title="网站底部字数统计"></a>网站底部字数统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-wordcount --save</div></pre></td></tr></table></figure>
+<p>然后在 <code>/themes/next/layout/_partials/footer.swig</code> 文件尾部加上：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"theme-info"</span>&gt;</div><div class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"powered-by"</span>&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"post-count"</span>&gt;Totol Words:&#123;&#123; totalcount(site) &#125;&#125;&lt;<span class="regexp">/span&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>div&gt;</div></pre></td></tr></table></figure>
+<h1 id="实现统计功能"><a href="#实现统计功能" class="headerlink" title="实现统计功能"></a>实现统计功能</h1><p>然后在主题的配置文件 <code>_config.yml</code> 中，配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Post wordcount display settings</span></div><div class="line"><span class="comment"># Dependencies: https://github.com/willin/hexo-wordcount</span></div><div class="line"><span class="attr">post_wordcount:</span></div><div class="line"><span class="attr">  item_text:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  wordcount:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  min2read:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h1 id="添加顶部加载条"><a href="#添加顶部加载条" class="headerlink" title="添加顶部加载条"></a>添加顶部加载条</h1><p>只需修改主题配置文件 <code>_config.yml</code> 将 <code>pace: false</code> 改为 <code>pace: true</code> 就行了，你还可以换不同样式的加载条。</p>
+<h1 id="在文章底部增加版权信息"><a href="#在文章底部增加版权信息" class="headerlink" title="在文章底部增加版权信息"></a>在文章底部增加版权信息</h1><p>在目录 <code>next/layout/_macro/</code> 下添加 <code>my-copyright.swig</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> page.copyright %&#125;</div><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"my_post_copyright"</span>&gt;</div><div class="line">  &lt;script src=<span class="string">"//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"</span>&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">  &lt;!-- JS库 sweetalert 可修改路径 --&gt;</div><div class="line">  &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">  &lt;script src=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">  &lt;link rel=<span class="string">"stylesheet"</span> type=<span class="string">"text/css"</span> href=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"</span>&gt;</div><div class="line">  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&lt;a href="&#123;&#123; url_for(page.path) &#125;&#125;"&gt;&#123;&#123; page.title &#125;&#125;&lt;/a&gt;&lt;/p&gt;</div><div class="line">  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&lt;a href="/" title="访问 &#123;&#123; theme.author &#125;&#125; 的个人博客"&gt;&#123;&#123; theme.author &#125;&#125;&lt;/a&gt;&lt;/p&gt;</div><div class="line">  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;&#123;&#123; page.date.format(<span class="string">"YYYY年MM月DD日 - HH:MM"</span>) &#125;&#125;&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">  &lt;p&gt;&lt;span&gt;最后更新:&lt;/</span>span&gt;&#123;&#123; page.updated.format(<span class="string">"YYYY年MM月DD日 - HH:MM"</span>) &#125;&#125;&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">  &lt;p&gt;&lt;span&gt;原始链接:&lt;/</span>span&gt;&lt;a href="&#123;&#123; url_for(page.path) &#125;&#125;" title="&#123;&#123; page.title &#125;&#125;"&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</div><div class="line">    &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"copy-path"</span>  title=<span class="string">"点击复制文章链接"</span>&gt;&lt;i class="fa fa-clipboard" data-clipboard-text="&#123;&#123; page.permalink &#125;&#125;"  aria-label="复制成功！"&gt;&lt;/i&gt;&lt;/span&gt;</div><div class="line">  &lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">  &lt;p&gt;&lt;span&gt;许可协议:&lt;/</span>span&gt;&lt;i class="fa fa-creative-commons"&gt;&lt;/i&gt; &lt;a rel=<span class="string">"license"</span> href=<span class="string">"https://creativecommons.org/licenses/by-nc-nd/4.0/"</span> target=<span class="string">"_blank"</span> title=<span class="string">"Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"</span>&gt;署名-非商业性使用-禁止演绎 <span class="number">4.0</span> 国际&lt;<span class="regexp">/a&gt; 转载请保留原文链接及作者。&lt;/</span>p&gt;  </div><div class="line">&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;script&gt;</span></div><div class="line"><span class="regexp">    var clipboard = new Clipboard('.fa-clipboard');</span></div><div class="line"><span class="regexp">    clipboard.on('success', $(function()&#123;</span></div><div class="line"><span class="regexp">      $(".fa-clipboard").click(function()&#123;</span></div><div class="line"><span class="regexp">        swal(&#123;   </span></div><div class="line"><span class="regexp">          title: "",   </span></div><div class="line"><span class="regexp">          text: '复制成功',   </span></div><div class="line"><span class="regexp">          html: false,</span></div><div class="line"><span class="regexp">          timer: 500,   </span></div><div class="line"><span class="regexp">          showConfirmButton: false</span></div><div class="line"><span class="regexp">        &#125;);</span></div><div class="line"><span class="regexp">      &#125;);</span></div><div class="line"><span class="regexp">    &#125;));  </span></div><div class="line"><span class="regexp">&lt;/</span>script&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<p>在目录 <code>next/source/css/_common/components/post/</code> 下添加 <code>my-post-copyright.styl</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">.my_post_copyright &#123;</div><div class="line">  width: <span class="number">85</span>%;</div><div class="line">  max-width: <span class="number">45</span>em;</div><div class="line">  margin: <span class="number">2.8</span>em auto <span class="number">0</span>;</div><div class="line">  padding: <span class="number">0.5</span>em <span class="number">1.0</span>em;</div><div class="line">  border: 1px solid #d3d3d3;</div><div class="line">  font-size: <span class="number">0.93</span>rem;</div><div class="line">  line-height: <span class="number">1.6</span>em;</div><div class="line">  word-<span class="keyword">break</span>: <span class="keyword">break</span>-all;</div><div class="line">  background: rgba(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.4</span>);</div><div class="line">&#125;</div><div class="line">.my_post_copyright p&#123;<span class="attr">margin</span>:<span class="number">0</span>;&#125;</div><div class="line">.my_post_copyright span &#123;</div><div class="line">  display: inline-block;</div><div class="line">  width: <span class="number">5.2</span>em;</div><div class="line">  color: #b5b5b5;</div><div class="line">  font-weight: bold;</div><div class="line">&#125;</div><div class="line">.my_post_copyright .raw &#123;</div><div class="line">  margin-left: <span class="number">1</span>em;</div><div class="line">  width: <span class="number">5</span>em;</div><div class="line">&#125;</div><div class="line">.my_post_copyright a &#123;</div><div class="line">  color: #808080;</div><div class="line">  border-bottom:<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">.my_post_copyright a:hover &#123;</div><div class="line">  color: #a3d2a3;</div><div class="line">  text-decoration: underline;</div><div class="line">&#125;</div><div class="line">.my_post_copyright:hover .fa-clipboard &#123;</div><div class="line">  color: #000;</div><div class="line">&#125;</div><div class="line">.my_post_copyright .post-url:hover &#123;</div><div class="line">  font-weight: normal;</div><div class="line">&#125;</div><div class="line">.my_post_copyright .copy-path &#123;</div><div class="line">  margin-left: <span class="number">1</span>em;</div><div class="line">  width: <span class="number">1</span>em;</div><div class="line">  +mobile()&#123;<span class="attr">display</span>:none;&#125;</div><div class="line">&#125;</div><div class="line">.my_post_copyright .copy-path:hover &#123;</div><div class="line">  color: #808080;</div><div class="line">  cursor: pointer;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改 <code>next/layout/_macro/post.swig</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">      &#123;% <span class="keyword">if</span> not is_index %&#125;</div><div class="line">        &#123;% include <span class="string">'my-copyright.swig'</span> %&#125;</div><div class="line">      &#123;% endif %&#125;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>修改 <code>next/source/css/_common/components/post/post.sty</code>l文件，在最后一行增加代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"my-post-copyright"</span></div></pre></td></tr></table></figure>
+<p>在 <code>/scaffolds/post.md</code> 文件中添加：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">copyright: true</div></pre></td></tr></table></figure>
+<h1 id="隐藏网页底部powered-By-Hexo-强力驱动"><a href="#隐藏网页底部powered-By-Hexo-强力驱动" class="headerlink" title="隐藏网页底部powered By Hexo / 强力驱动"></a>隐藏网页底部powered By Hexo / 强力驱动</h1><p>打开 <code>themes/next/layout/_partials/footer.swig</code> ,使用 <code>&lt;!--</code>  <code>--&gt;</code>隐藏之间的代码即可，或者直接删除。</p>
+<h1 id="添加宠物"><a href="#添加宠物" class="headerlink" title="添加宠物"></a>添加宠物</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -save hexo-helper-live2d</div></pre></td></tr></table></figure>
+<p>然后打开<code>Hexo/blog/themes/next/layout</code><br>的 <code>_layout.swig</code> ,将下面代码放到 <code>&lt;/body&gt;</code> 之前：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; live2d() &#125;&#125;</div></pre></td></tr></table></figure>
+<p>然后在在目录配置文件的 <code>_config</code>.yml 中添加参数</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">live2d:</span></div><div class="line"><span class="attr">  model:</span> <span class="string">wanko</span></div><div class="line"><span class="attr">  bottom:</span> <span class="bullet">-30</span></div></pre></td></tr></table></figure>
+<p><kbd><a href="https://www.ctolib.com/hexo-helper-live2d.html" target="_blank" rel="external">[图标样式预览]</a></kbd><br>这里提供宠物名称：<code>Gantzert_Felixander</code> <code>sEpsilon2.1</code> <code>haru</code> <code>miku</code> <code>ni-j</code> <code>nico</code> <code>nito</code> <code>nipsilon</code> <code>nietzsche</code> <code>shizuku</code> <code>tsumiki</code> <code>wanko</code> <code>z16</code> <code>hibiki</code> <code>koharu</code> <code>haruto</code> <code>Unitychan</code> <code>tororo</code> <code>hijiki</code></p>
+<h1 id="特别感谢"><a href="#特别感谢" class="headerlink" title="特别感谢"></a>特别感谢</h1><p>具体可以参考该文章 <a href="https://segmentfault.com/a/1190000009544924#articleHeader9" target="_blank" rel="external">hexo的next主题个性化配置教程</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍 &lt;code&gt;hexo&lt;/code&gt; 的 &lt;code&gt;NexT&lt;/code&gt; 更进一步的优话配置&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Blog Build" scheme="http://junlinhz.top/categories/Blog-Build/"/>
+    
+      <category term="NexT Theme" scheme="http://junlinhz.top/categories/Blog-Build/NexT-Theme/"/>
+    
+    
+      <category term="Hexo" scheme="http://junlinhz.top/tags/Hexo/"/>
+    
+      <category term="NexT" scheme="http://junlinhz.top/tags/NexT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-Coding搭建博客</title>
+    <link href="http://junlinhz.top/2017/08/26/Hexo-Coding%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://junlinhz.top/2017/08/26/Hexo-Coding搭建博客/</id>
+    <published>2017-08-26T10:16:08.000Z</published>
+    <updated>2017-08-29T06:19:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>已经实现了 <code>github</code> 的部署，但是为了追求速度，还希望其部署在 <code>coding</code>上</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="配置「coding」"><a href="#配置「coding」" class="headerlink" title="配置「coding」"></a>配置「coding」</h1><h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>进入 <a href="https://coding.net" target="_blank" rel="external">[coding | 官网]</a> 注册账号，最好使用 <code>github</code> 的邮箱，这样生成的 <code>ssh</code> 一致，方便配置。</p>
+<h2 id="生成「ssh」"><a href="#生成「ssh」" class="headerlink" title="生成「ssh」"></a>生成「ssh」</h2><p>如果之前没有生成过 <code>ssh</code>，可以通过以下命令生成，这里邮箱为 <code>coding</code> 注册邮箱，如果之前已经生成过 <code>ssh</code>，则在 <code>~/.ssh/id_rsa.pub</code> 里放置了公钥密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -b 4096 -C <span class="string">"你的邮箱"</span></div><div class="line">$ ssh-add</div></pre></td></tr></table></figure>
+<h2 id="绑定「ssh」"><a href="#绑定「ssh」" class="headerlink" title="绑定「ssh」"></a>绑定「ssh」</h2><p>将生成的 <code>id_rsa.pub</code> 里的内容复制到 <code>coding</code> 的 <code>ssh公钥</code> 里即可。输入下面命令，进行验证。</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@git.coding.<span class="built_in">net</span></div></pre></td></tr></table></figure>
+<h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>建立 <code>name.coding.me</code> 项目</p>
+<h1 id="「Hexo」配置"><a href="#「Hexo」配置" class="headerlink" title="「Hexo」配置"></a>「Hexo」配置</h1><p>对目录配置文件 <code>_config.yml</code> 进行如下配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repository:</span></div><div class="line"><span class="attr">    github:</span> <span class="string">git@github.com:sxzqcsq/sxzqcsq.github.io</span></div><div class="line"><span class="attr">    coding:</span> <span class="string">git@git.coding.net:junlinhz/junlinhz.coding.me</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
+<p>在目录的 <code>source</code> 下建立一个文件 <code>Staticfile</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch Staticfile</div></pre></td></tr></table></figure>
+<p>随后进行微博生成，提交。</p>
+<h1 id="「Pages」服务部署"><a href="#「Pages」服务部署" class="headerlink" title="「Pages」服务部署"></a>「Pages」服务部署</h1><p>在项目里的 <code>pages服务</code> 进行相关的域名设置。</p>
+<p>至此， <code>coding</code> 上部署 <code>Hexo</code> 就基本完毕了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;已经实现了 &lt;code&gt;github&lt;/code&gt; 的部署，但是为了追求速度，还希望其部署在 &lt;code&gt;coding&lt;/code&gt;上&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Blog Build" scheme="http://junlinhz.top/categories/Blog-Build/"/>
+    
+      <category term="Configure" scheme="http://junlinhz.top/categories/Blog-Build/Configure/"/>
+    
+    
+      <category term="Hexo" scheme="http://junlinhz.top/tags/Hexo/"/>
+    
+      <category term="coding" scheme="http://junlinhz.top/tags/coding/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扬起一尘沙</title>
+    <link href="http://junlinhz.top/2017/08/23/%E6%89%AC%E8%B5%B7%E4%B8%80%E5%B0%98%E6%B2%99/"/>
+    <id>http://junlinhz.top/2017/08/23/扬起一尘沙/</id>
+    <published>2017-08-23T11:00:58.000Z</published>
+    <updated>2018-04-01T14:15:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ove3p34k7.bkt.clouddn.com/shu.jpg" alt="树花"></p>
+<blockquote>
+<p>一把沙扔出去，只能抓住一些，你会选什么</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="随心"><a href="#随心" class="headerlink" title="随心"></a>随心</h2><p>最近一直在纠结一些关于工作学习的问题，你会为了一个很厉害的成就去委屈自己的初衷本身就是一个很难的话题，你喜欢的，或者有前途的，是否存在矛盾也不得而知。你唯一知道的就是你现在喜欢什么，你将来的期待的样子，剩下的都是道听途说，众说纷纭了，有的说这个号，有的说那个号，其实人就是要有一个自己判断，当然话说回来还是因为自己不够出众，要么出众要么出局的想法也是建立在出众的标准上的，你评价出众的标准不同，你对待自己的放是不同得到的结果也是完全不同的。所以要么随缘，要么随心，随缘以后可能喜欢，可能无语，随心以后，当心无悔。</p>
+<h2 id="人生期待值"><a href="#人生期待值" class="headerlink" title="人生期待值"></a>人生期待值</h2><p>人总是会拿一些可有可无的东西去比较，比如小学初中都是谁谁谁第一啦，谁谁谁学习好，高中都是谁谁谁考了什么，谁谁谁学到专业多热门了，自己喜欢的是什么都是在选择之后去决定的，还是挺悲哀的。每个人对人生期待值都在不停的暴涨，你每天在满足了自己的既定目标后，所带来的还是不停的不满足，所以不满是向上的车轮么，谁知道嘞。不过唯一确定的是在你有了自己标准下的满足之后，你对一些事情也会变的毫无所谓，除非是你还想提高自己的标准证明一番，否则所有的都是一种别人眼里的装X行为，自己对自己阿Q精神的展现。大体来说还是尽力尽心过后，大致满意即可吧。</p>
+<h2 id="关于相看两不厌"><a href="#关于相看两不厌" class="headerlink" title="关于相看两不厌"></a>关于相看两不厌</h2><p>今天知乎上看到，点击最高的文章，三点。</p>
+<ul>
+<li>对期待值的管理</li>
+<li>阈值自控</li>
+<li>应对主观时空扭曲</li>
+</ul>
+<h3 id="期待值"><a href="#期待值" class="headerlink" title="期待值"></a>期待值</h3><p>主要体现在别人对于一些平时表现好的人，就会要求其越来越好，一些平时树立的好好形象，一旦崩塌，就会舆论一片倒，不会接受一点包容，所以在职场，爱情都不要急着去表现自己，给自己一些空间，别让别人对你期待值过高而现实往往一般，厉害的大神都是平时铺垫，最后收获，在非必要情况下，不要把骄傲放身上，压抑自己的表现欲和欲望。</p>
+<h3 id="阈值自控"><a href="#阈值自控" class="headerlink" title="阈值自控"></a>阈值自控</h3><p>一个人在长期的高强度刺激下，就会对一些事情索然无味，豪门公子哥对金钱视若粪土，这就是不想创公司的马云，脸盲的强东，和一无所有的健林的一些感受吧，感觉也挺对的，一个东西无限刺激你的时候，你也就会索然，这其实在我看来是期望值不断被满足，不断刷新带来的副作用吧。</p>
+<h3 id="时空扭曲"><a href="#时空扭曲" class="headerlink" title="时空扭曲"></a>时空扭曲</h3><p>这个观点其实挺好的，人的记忆增长随着不断年龄增长而比例变小，五岁到六岁增长了原来的五分之一，而二十六到二十七也就增长了原来的二十六分之一。再加上每天越来越机械重复的工作，你会发现时间一转而逝。所以跳出舒适圈，之后的每天都是全新的才会让你不那么觉得时光匆匆。</p>
+<p>一个长不大的人。</p>
+<p>以上。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ove3p34k7.bkt.clouddn.com/shu.jpg&quot; alt=&quot;树花&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一把沙扔出去，只能抓住一些，你会选什么&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Idea" scheme="http://junlinhz.top/categories/Idea/"/>
+    
+      <category term="Life" scheme="http://junlinhz.top/categories/Idea/Life/"/>
+    
+    
+      <category term="Free" scheme="http://junlinhz.top/tags/Free/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-NexT第三方服务集成</title>
+    <link href="http://junlinhz.top/2017/08/23/Hexo-NexT%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E9%9B%86%E6%88%90/"/>
+    <id>http://junlinhz.top/2017/08/23/Hexo-NexT第三方服务集成/</id>
+    <published>2017-08-23T05:48:12.000Z</published>
+    <updated>2017-08-26T10:16:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本篇主要将 <code>NexT</code> 第三方服务集成包括评论、数据统计、内容分享、搜索等。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h1><p>NexT 支持多款评论系统。</p>
+<p>如需取消某个 <strong><code>页面/文章</code></strong> 的评论，在 <code>md</code> 文件的 <code>front-matter</code> 中增加 <code>comments: false</code></p>
+<h2 id="DISQUS"><a href="#DISQUS" class="headerlink" title="DISQUS"></a>DISQUS</h2><p>编辑主题 <code>_config.yml</code> 文件 ，将 <code>disqus</code> 下的 <code>enable</code> 设定为 <code>true</code>,同时提供您的 <code>shortname</code>。<code>count</code> 用于指定是否显示评论数量。这里貌似要到 <code>disqus</code> 去注册，然后填入 <code>shortname</code> 才能使用，而且被 <code>qiang</code> 里以后也不显示评论，所以这里不予启用。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">disqus:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  shortname:</span></div><div class="line"><span class="attr">  count:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h2 id="HyperComments"><a href="#HyperComments" class="headerlink" title="HyperComments"></a>HyperComments</h2><ul>
+<li>登录官方网站 <a href="https://www.hypercomments.com/" target="_blank" rel="external">[HYPERCOMMENTS]</a>，注册使用免费服务，按步骤进行。进入个人中心的设置，里面有 <code>Moderators</code> 下的 <code>ID</code> 输入即可开通，当然也可以进行一些设置(需要付费)。</li>
+</ul>
+<p>修改主题配置文件 <code>_config.yml</code> 以下配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Hypercomments</span></div><div class="line"><span class="attr">hypercomments_id:</span> <span class="number">94751</span></div></pre></td></tr></table></figure>
+<h2 id="网易云跟帖"><a href="#网易云跟帖" class="headerlink" title="网易云跟帖"></a>网易云跟帖</h2><p>本人对于网易有特殊情结，所以想试下国产的好不好用。登录 <a href="http://netease.im/im?from=bdjjff15241" target="_blank" rel="external">[网易云跟帖]</a>，获取 <code>Product Key</code>。很不幸，好像我在写的时候于 2017年8月1号 关闭。</p>
+<h2 id="LiveRe"><a href="#LiveRe" class="headerlink" title="LiveRe"></a>LiveRe</h2><ul>
+<li>进入 <a href="https://livere.com/" target="_blank" rel="external">[LiveRe | 官网]</a>进行注册</li>
+<li>使用 <code>city</code> 版本进行安装</li>
+<li>进入代码管理的一般网站，获取 <code>data-uid</code></li>
+</ul>
+<h1 id="数据统计与分析"><a href="#数据统计与分析" class="headerlink" title="数据统计与分析"></a>数据统计与分析</h1><p>数据统计也有好多第三方，这里使用百度来进行统计</p>
+<h2 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h2><p>登录 <a href="https://tongji.baidu.com/web/welcome/login" target="_blank" rel="external">[百度统计]</a>，然后注册站长模块，进入 <strong><code>管理</code></strong> 代码获取，将 <code>hm.js?</code> 后面的统计脚本 <code>id</code> 放入 <code>baidu_anaLytics</code> 下。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Baidu Analytics ID</span></div><div class="line"><span class="attr">baidu_analytics:</span></div></pre></td></tr></table></figure>
+<h1 id="阅读次数统计"><a href="#阅读次数统计" class="headerlink" title="阅读次数统计"></a>阅读次数统计</h1><p>阅读次数统计使用 <code>LeanCloud</code></p>
+<h2 id="LeanCloud"><a href="#LeanCloud" class="headerlink" title="LeanCloud"></a>LeanCloud</h2><p>在注册完成 <a href="https://leancloud.cn/" target="_blank" rel="external">[LeanCloud]</a>后，创建新应用，随意输入名称。创建 <code>class</code> 为 <code>Counter</code> 名字必须是这个，然后获取其中的 <code>App ID</code> 和 <code>App Key</code>，放到指定位置。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">leancloud_visitors:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  app_id:</span> <span class="comment">#&lt;app_id&gt;</span></div><div class="line"><span class="attr">  app_key:</span> <span class="comment">#&lt;app_key&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="内容分享服务"><a href="#内容分享服务" class="headerlink" title="内容分享服务"></a>内容分享服务</h1><h2 id="JiaThis"><a href="#JiaThis" class="headerlink" title="JiaThis"></a>JiaThis</h2><p>在主题配置文件 <code>_config.yml</code> 修改 <code>jiathis</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">jiathis:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h1 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h1><h2 id="Swiftype-站内搜索"><a href="#Swiftype-站内搜索" class="headerlink" title="Swiftype 站内搜索"></a>Swiftype 站内搜索</h2><ul>
+<li>前往 <a href="https://swiftype.com/" target="_blank" rel="external">[Swiftype]</a></li>
+<li>创建搜索引擎</li>
+<li>定制激活搜索， <code>install search</code>，获得 <code>swiftype_key</code></li>
+<li><p>更新主题配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> <span class="comment"># Swiftype Search API Key</span></div><div class="line"><span class="attr">swiftype_key:</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>Swiftype</code> 不再免费好像，所以不使用</p>
+<h2 id="Local-Search"><a href="#Local-Search" class="headerlink" title="Local Search"></a>Local Search</h2><ul>
+<li><p>安装 <code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-searchdb --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>编辑站点配置文件 <code>_config.yml</code> ，新增以下内容到任意位置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">search:</span></div><div class="line"><span class="attr">  path:</span> <span class="string">search.xml</span></div><div class="line"><span class="attr">  field:</span> <span class="string">post</span></div><div class="line"><span class="attr">  format:</span> <span class="string">html</span></div><div class="line"><span class="attr">  limit:</span> <span class="number">10000</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>编辑主题配置文件 <code>_config.yml</code> ，启用本地搜索功能：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Local search</span></div><div class="line"><span class="attr">local_search:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>推荐使用该方法，速度很快，也不麻烦。</p>
+<h1 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h1><p>编辑主题配置文件 <code>_config.yml</code>，将 <code>mathjax</code> 设定为 <code>true</code> 即可。语法见<br><a href="https://www.mathjax.org" target="_blank" rel="external">[MathJax]</a></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># MathJax Support</span></div><div class="line"><span class="attr">mathjax:</span></div></pre></td></tr></table></figure>
+<h1 id="自动打开新建的「md文件」"><a href="#自动打开新建的「md文件」" class="headerlink" title="自动打开新建的「md文件」"></a>自动打开新建的「md文件」</h1><ul>
+<li>在主目录的 <code>scripts</code> 建立 <code>JavaScript</code> 脚本</li>
+<li><p><code>mac</code> 用户输入如下脚本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> exec = <span class="built_in">require</span>(<span class="string">'child_process'</span>).exec;</div><div class="line">hexo.on(<span class="string">'new'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  spawn(<span class="string">'start "markdown editor绝对路径.exe" '</span> + data.path);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>至此第三方服务集成介绍就此结束。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本篇主要将 &lt;code&gt;NexT&lt;/code&gt; 第三方服务集成包括评论、数据统计、内容分享、搜索等。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Blog Build" scheme="http://junlinhz.top/categories/Blog-Build/"/>
+    
+      <category term="NexT Theme" scheme="http://junlinhz.top/categories/Blog-Build/NexT-Theme/"/>
+    
+    
+      <category term="Hexo" scheme="http://junlinhz.top/tags/Hexo/"/>
+    
+      <category term="NexT" scheme="http://junlinhz.top/tags/NexT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-NexT主题优化配置</title>
+    <link href="http://junlinhz.top/2017/08/22/Hexo-Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/"/>
+    <id>http://junlinhz.top/2017/08/22/Hexo-Next主题优化配置/</id>
+    <published>2017-08-22T09:29:24.000Z</published>
+    <updated>2017-08-25T07:44:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>介绍 Hexo 下 Next 主题的优化配置问题</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h1><ul>
+<li>Hexo 官网 - <a href="https://hexo.io/" target="_blank" rel="external">[Hexo]</a></li>
+<li>Hexo 文档 - <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">[Hexo | 文档]</a></li>
+<li>Hexo 相关 - <a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">[Hexo | 配置]</a></li>
+<li>Hexo 命令 - <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">[Hexo | 指令]</a></li>
+<li>NexT 官网 - <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">[NexT]</a></li>
+<li>主题设定 - <a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">[NexT | 主题设定]</a></li>
+<li>第三方服务 - <a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">[NexT | 第三方服务]</a></li>
+<li>图标服务 - <a href="http://fontawesome.io/" target="_blank" rel="external">[Font Awesome]</a></li>
+</ul>
+<h1 id="设置「RSS」"><a href="#设置「RSS」" class="headerlink" title="设置「RSS」"></a>设置「RSS」</h1><ul>
+<li><p>安装 <code>hexo-generator-feed</code> 插件</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ npm install hexo-generator-feed --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置，在本地 <code>hexo</code> 根目录下的 <code>_config.yml</code> 文件中添加如下配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Extensions</span></div><div class="line"><span class="comment">## Plugins: http://hexo.io/plugins/</span></div><div class="line"><span class="comment">#RSS订阅</span></div><div class="line"><span class="attr">plugin:</span></div><div class="line"><span class="bullet">-</span> <span class="string">hexo-generator-feed</span></div><div class="line"><span class="comment">#Feed Atom</span></div><div class="line"><span class="attr">feed:</span></div><div class="line"><span class="attr">type:</span> <span class="string">atom</span></div><div class="line"><span class="attr">path:</span> <span class="string">atom.xml</span></div><div class="line"><span class="attr">limit:</span> <span class="number">20</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>添加主题配置，在主题 <code>_config.yml</code> 文件中添加如下配置。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">rss:</span> <span class="string">/atom.xml</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="添加「标签」页面"><a href="#添加「标签」页面" class="headerlink" title="添加「标签」页面"></a>添加「标签」页面</h1><ul>
+<li><p>新建标签页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>~/junlinhz/source/tags/index.md</code> 中设置类型为  <code>tags</code> ，页面内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">tags</span></div><div class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-08</span><span class="bullet">-22</span> <span class="number">19</span><span class="string">:37:40</span></div><div class="line"><span class="attr">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>修改主题 <code>_config.yml</code> 文件，在 <code>menu</code> 下添加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">/tags/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="添加「分类」页面"><a href="#添加「分类」页面" class="headerlink" title="添加「分类」页面"></a>添加「分类」页面</h1><ul>
+<li><p>在 <code>Hexo</code> 目录下，新建一个页面，命名为 <code>categories</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>~/junlinhz/source/categories/index.md</code> 中设置类型为 <code>tags</code> ，页面内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">title:</span> <span class="string">categories</span></div><div class="line"><span class="attr">date:</span> <span class="number">2017</span><span class="bullet">-08</span><span class="bullet">-22</span> <span class="number">19</span><span class="string">:54:53</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>修改主题 <code>_config.yml</code> 文件，在 <code>menu</code> 下添加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">/categories/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="设置「字体」"><a href="#设置「字体」" class="headerlink" title="设置「字体」"></a>设置「字体」</h1><p>为了解决 <code>Google Fonts API</code> 不稳定的问题，<code>NexT</code> 在 <code>5.0.1</code> 中引入此特性。 通过此特性，你可以指定所使用的字体库外链地址；与此同时，<code>NexT</code>开放了 5 个特定范围的字体设定，他们是：</p>
+<ul>
+<li>全局字体：定义的字体将在全站范围使用</li>
+<li>标题字体：文章内标题的字体（h1, h2, h3, h4, h5, h6）</li>
+<li>文章字体：文章所使用的字体</li>
+<li>Logo 字体：<code>Logo</code> 所使用的字体</li>
+<li>代码字体： 代码块所使用的字体</li>
+</ul>
+<p>各项所指定的字体将作为首选字体，当他们不可用时会自动 <code>Fallback</code> 到 <code>NexT</code> 设定的基础字体组：</p>
+<ul>
+<li>非代码类字体：<code>Fallback</code> 到 <code>&quot;PingFang SC&quot;</code>, <code>&quot;Microsoft YaHei&quot;</code>, <code>sans-serif</code></li>
+<li>代码类字体： <code>Fallback</code> 到 <code>consolas</code>, <code>Menlo</code>, <code>&quot;PingFang SC&quot;</code>, <code>&quot;Microsoft YaHei&quot;</code>, <code>monospace</code></li>
+</ul>
+<p>另外，每一项都有一个额外的 <code>external</code> 属性，此属性用来控制是否使用外链字体库。 开放此属性方便你设定那些已经安装在系统中的字体，减少不必要的请求（请求大小）。</p>
+<p>可以在主题的 <code>_config.yml</code> 的字体处修改，内容如下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="attr">font:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"></div><div class="line">  <span class="comment"># 外链字体库地址，例如 //fonts.googleapis.com (默认值)</span></div><div class="line"><span class="attr">  host:</span></div><div class="line"></div><div class="line">  <span class="comment"># 全局字体，应用在 body 元素上</span></div><div class="line"><span class="attr">  global:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Monda</span></div><div class="line"></div><div class="line">  <span class="comment"># 标题字体 (h1, h2, h3, h4, h5, h6)</span></div><div class="line"><span class="attr">  headings:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Roboto</span> <span class="string">Slab</span></div><div class="line"></div><div class="line">  <span class="comment"># 文章字体</span></div><div class="line"><span class="attr">  posts:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"></div><div class="line">  <span class="comment"># Logo 字体</span></div><div class="line"><span class="attr">  logo:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Lobster</span> <span class="string">Two</span></div><div class="line"><span class="attr">    size:</span> <span class="number">24</span></div><div class="line"></div><div class="line">  <span class="comment"># 代码字体，应用于 code 以及代码块</span></div><div class="line"><span class="attr">  codes:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">PT</span> <span class="string">Mono</span></div></pre></td></tr></table></figure>
+<h1 id="设置「代码高亮主题」"><a href="#设置「代码高亮主题」" class="headerlink" title="设置「代码高亮主题」"></a>设置「代码高亮主题」</h1><p><code>NexT</code> 使用 <code>Tomorrow Theme</code> 作为代码高亮，共有5款主题供你选择。 <code>NexT</code> 默认使用的是 白色的 <code>normal</code> 主题，可选的值有 <code>normal</code>，<code>night</code>， <code>night blue</code>， <code>night bright</code>， <code>night eighties</code>：</p>
+<p>更改 <code>highlight_theme</code> 字段，将其值设定成你所喜爱的高亮主题，例如：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></div></pre></td></tr></table></figure>
+<h1 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h1><p>侧栏社交链接的修改包含两个部分，第一是链接，第二是链接图标。 两者配置均在主题的 <code>_config.yml</code> 中。</p>
+<ul>
+<li>链接放置在 <code>social</code> 字段下，一行一个链接。其键值格式是 <strong><code>显示文本: 链接地址</code></strong>。</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Social links</span></div><div class="line"><span class="attr">social:</span></div><div class="line"><span class="attr">  GitHub:</span> <span class="attr">https://github.com/your-user-name</span></div><div class="line"><span class="attr">  Twitter:</span> <span class="attr">https://twitter.com/your-user-name</span></div><div class="line">  <span class="string">微博:</span> <span class="attr">http://weibo.com/your-user-name</span></div><div class="line">  <span class="string">豆瓣:</span> <span class="attr">http://douban.com/people/your-user-name</span></div><div class="line">  <span class="string">知乎:</span> <span class="attr">http://www.zhihu.com/people/your-user-name</span></div><div class="line">  <span class="comment"># 等等</span></div></pre></td></tr></table></figure>
+<ul>
+<li>设定链接的图标，对应的字段是 <code>social_icons</code>。其键值格式是 <strong><code>匹配键: Font Awesome 图标名称</code></strong>， <strong><code>匹配键</code></strong> 与上一步所配置的链接的 <strong><code>显示文本</code></strong> 相同（大小写严格匹配），<strong><code>图标名称</code></strong> 是 <code>Font Awesome</code> 图标的名字（不必带 <code>fa-</code> 前缀）。 <code>enable</code> 选项用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Social Icons</span></div><div class="line"><span class="attr">social_icons:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line">  <span class="comment"># Icon Mappings</span></div><div class="line"><span class="attr">  GitHub:</span> <span class="string">github</span></div><div class="line"><span class="attr">  Twitter:</span> <span class="string">twitter</span></div><div class="line">  <span class="string">微博:</span> <span class="string">weibo</span></div></pre></td></tr></table></figure>
+<h1 id="设置「打赏」功能"><a href="#设置「打赏」功能" class="headerlink" title="设置「打赏」功能"></a>设置「打赏」功能</h1><p>在主题 <code>_config.yml</code> 中添加打赏图片即可。关于打赏图片的制作，可以登录 <a href="https://qr.alipay.com/paipai/open.htm?action=logout" target="_blank" rel="external">[支付宝 | 扫码发放平台]</a> 进行制作，选取适合 <code>PC</code> 的图片即可。微信制作的话比较麻烦，需要现在手机端生成自己的收款码，再传到电脑上，将其进行截取。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">reward_comment:</span> <span class="string">坚持原创技术分享，您的支持将鼓励我继续创作！</span></div><div class="line"><span class="attr">wechatpay:</span> <span class="string">/path/to/wechat-reward-image</span></div><div class="line"><span class="attr">alipay:</span> <span class="string">/path/to/alipay-reward-image</span></div></pre></td></tr></table></figure>
+<h1 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h1><p>可以将朋友的一些链接挂到自己的网站，编辑主题 <code>_config.yml</code> 进行设置。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># title</span></div><div class="line"><span class="attr">links_title:</span> <span class="string">Links</span></div><div class="line"><span class="attr">links:</span></div><div class="line"><span class="attr">  Title:</span> <span class="attr">http://example.com/</span></div></pre></td></tr></table></figure>
+<h1 id="站点建立时间"><a href="#站点建立时间" class="headerlink" title="站点建立时间"></a>站点建立时间</h1><p>这个会在站底显示出来，在主题 <code>_config.yml</code> 编辑 <code>since</code> 字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">since: 2017</div></pre></td></tr></table></figure>
+<h1 id="设置「动画效果」"><a href="#设置「动画效果」" class="headerlink" title="设置「动画效果」"></a>设置「动画效果」</h1><p>动画效果的设置需要在加载完网页时候才会显示，如果追求速度不建议使用，编辑主题 <code>_config.yml</code> 设置 <code>use_motion</code> 字段。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">use_motion:</span> <span class="literal">true</span>  <span class="comment"># 开启动画效果</span></div><div class="line"><span class="attr">use_motion:</span> <span class="literal">false</span> <span class="comment"># 关闭动画效果</span></div></pre></td></tr></table></figure>
+<h1 id="设置「背景动画」"><a href="#设置「背景动画」" class="headerlink" title="设置「背景动画」"></a>设置「背景动画」</h1><p>自带有两种背景动画可以设置。在主题 <code>_config.yml</code> 搜索 <code>canvas_nest</code> 或  <code>three_waves</code> 即可，但只能设置一种。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># canvas_nest</span></div><div class="line"><span class="attr">canvas_nest:</span> <span class="literal">true</span> <span class="string">//开启动画</span></div><div class="line"><span class="attr">canvas_nest:</span> <span class="literal">false</span> <span class="string">//关闭动画</span></div><div class="line"></div><div class="line"><span class="comment"># three_waves</span></div><div class="line"><span class="attr">three_waves:</span> <span class="literal">true</span> <span class="string">//开启动画</span></div><div class="line"><span class="attr">three_waves:</span> <span class="literal">false</span> <span class="string">//关闭动画</span></div></pre></td></tr></table></figure>
+<p>这里还可对于 <code>canvas_nest</code> 还可继续进行修改，增加一些更动态的动画，但是我在尝试之后发现会有明显的卡顿，就关闭了。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># canvas_lines</span></div><div class="line"><span class="attr">canvas_lines:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># canvas_sphere</span></div><div class="line"><span class="attr">canvas_sphere:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h1 id="设置「icon」"><a href="#设置「icon」" class="headerlink" title="设置「icon」"></a>设置「icon」</h1><p><a href="http://www.atool.org/ico.php" target="_blank" rel="external">[图标制作网站]</a></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Put your favicon.ico into `hexo-site/source/` directory.</span></div><div class="line"><span class="attr">favicon:</span> <span class="string">/favicon.ico</span></div></pre></td></tr></table></figure>
+<p>至此主题类的优化就基本完成，下面将就第三方服务插件的设置做出介绍。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;介绍 Hexo 下 Next 主题的优化配置问题&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Blog Build" scheme="http://junlinhz.top/categories/Blog-Build/"/>
+    
+      <category term="NexT Theme" scheme="http://junlinhz.top/categories/Blog-Build/NexT-Theme/"/>
+    
+    
+      <category term="Hexo" scheme="http://junlinhz.top/tags/Hexo/"/>
+    
+      <category term="NexT" scheme="http://junlinhz.top/tags/NexT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello new world</title>
+    <link href="http://junlinhz.top/2017/08/21/hello-new-world/"/>
+    <id>http://junlinhz.top/2017/08/21/hello-new-world/</id>
+    <published>2017-08-21T14:38:17.000Z</published>
+    <updated>2017-08-28T06:10:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>喜欢鼓捣一些自己感兴趣的所以还是有所成功吧~</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="绪"><a href="#绪" class="headerlink" title="绪"></a>绪</h2><p>2017年8月20日，注册了阿里云，买了自己喜欢的域名，纠结良多，选定了<a href="http://www.junlinhz.top" target="_blank" rel="external">junlinhz.top</a>，其实没那么大的志气，但是单纯的就想霸气一点，想着和小二上酒的气势相符，总要做些自己想去做的，喜欢做的。</p>
+<h2 id="急"><a href="#急" class="headerlink" title="急"></a>急</h2><p>2017年8月21日，寻思了好久的云服务器，感觉还是略微有点性价比的问题，一堆的好玩的东西值得自己去学习，忽然就来了精神，一整天都在默默查资料，搞东西，感觉总结真的是一件成就感满满的事情，羡慕余弦大大的博客，很拉风，连头像都看的那么让人激动<a href="http://evilcos.me" target="_blank" rel="external">EVILCOS</a>。所以想着什么都是可以模仿并去超越的，所以想着他的框架<code>WordPress</code>要不要去实现。后来看到了知乎上用<code>github</code>和<code>Hexo</code>搭建也还是很不错的，而且省去了备案和<code>VPS</code>的钱也是很好接受的，想了下直接套框架进去，顺便研究了下<code>GIT</code>也是不错。不过偶然发现的<code>Coding</code>还是眼前一亮。想着先在<code>github</code>上试试也是好的，等框架啥的学会了再放上去也不迟。不过感觉一些第三方插件很酷，还是没有学会用就迫不及待下载<code>MacDown</code>来写东西了。</p>
+<h2 id="起"><a href="#起" class="headerlink" title="起"></a>起</h2><p>其实还是担心着将来，无法言开，几滴小巷落雨，睁不开阳光回转，那年你笑我痴狂花自会开，今朝我把风皱起一池波澜，看前方黑洞洞，待我前去，杀踏歌干干净净~~~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;喜欢鼓捣一些自己感兴趣的所以还是有所成功吧~&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="Idea" scheme="http://junlinhz.top/categories/Idea/"/>
+    
+      <category term="Life" scheme="http://junlinhz.top/categories/Idea/Life/"/>
+    
+    
+      <category term="Free" scheme="http://junlinhz.top/tags/Free/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo-官方文档</title>
+    <link href="http://junlinhz.top/2017/08/20/Hexo-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/"/>
+    <id>http://junlinhz.top/2017/08/20/Hexo-官方文档/</id>
+    <published>2017-08-20T05:48:12.000Z</published>
+    <updated>2017-08-29T06:19:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Blog Build" scheme="http://junlinhz.top/categories/Blog-Build/"/>
+    
+      <category term="Configure" scheme="http://junlinhz.top/categories/Blog-Build/Configure/"/>
+    
+    
+      <category term="Hexo" scheme="http://junlinhz.top/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
